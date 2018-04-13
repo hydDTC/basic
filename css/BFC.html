@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>块级格式化上下文</title>
+    <style>
+        p{
+            margin: 30px;
+            height: 20px;
+            line-height: 20px;
+            background: red;
+        }
+    </style>
+</head>
+<body>
+<!--我们为第一个p标签外层加了一个div，并且样式为overflow:hidden;也就创建了一个BFC盒子，此时两个p标签的间距就变为了-->
+<!--第一个p标签在所属的BFC内的底部margin值30px加上第二个p标签距离顶部的margin值30px，最终也就变为了60px。-->
+        <p>我是p1</p>
+        <p>我是p2</p>
+</body>
+</html>

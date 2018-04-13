@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>去除数组汇总任意多个值</title>
+</head>
+<body>
+    <script>
+//        实现一个 destroyer 函数，第一个参数是初始数组，
+//        后跟一个或多个参数。从初始数组中删除与这些参数具有相同值的所有元素。
+        function destroyer(arr,item1,item2) {
+            var result = arr.filter(function(item,index){
+                return item!=item1 && item !=item2;
+            })
+            console.log(result)
+            return result;
+        }
+
+        destroyer([1, 2, 3, 1, 2, 3], 2, 3);
+    </script>
+</body>
+</html>

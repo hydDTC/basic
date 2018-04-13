@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>setTimeout</title>
+</head>
+<body>
+<script>
+    // 一
+//    var obj = {
+//        name:'hyd'
+//    }
+    var obj = "hyd";
+    console.log(obj)
+    function test(str){
+        console.log('哈哈哈')
+        console.log(str)  //字符串对象都可以
+    }
+//    setTimeout(function(){    //这个function中不要传递参数
+//        test(obj)
+//    },1000)
+
+
+
+    //二
+//    setTimeout("test("+obj+")",1000);  有问题
+//      setTimeout("test()",1000);  对
+//      setTimeout(test(),1000);  对
+      setTimeout(test,1000);  //对
+
+</script>
+</body>
+</html>

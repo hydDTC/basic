@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    for(var i=0,l=5;i<l;i++){
+        setTimeout(function(){
+            console.log(i); // 5,5,5,5,5
+        },0)
+    }
+
+function test(i){
+    setTimeout(function(){   // 这个function不能传i
+        console.log(i); // 5,5,5,5,5  模拟ajax异步请求
+    },0)
+}
+
+for(var i=0,l=5;i<l;i++){
+   test(i);
+}
+
+
+//for(var i=0,l=5;i<l;i++){
+//    (function a(i){   //函数自执行
+//        setTimeout(function(){
+//            console.log(i); // 0,1,2,3,4
+//        },0)
+//    })(i)
+//}
+
+//this._timeout = setTimeout( this.timer_task ,30000 ); //wrong
+//this._timeout = setTimeout( ()=>{this.timer_task()} ,30000 );
+    // setTimeout(“searchJDWater(”+url+“)”, 100);
+    // 带参数方法使用setTimeout要注意，setTimeout("函数名("+参数+")",毫秒数)，
+    //           这里的参数只能是字符串形式的，而不能传递一个对象
+
+
+    //setTimeout
+    //1.window.setTimeout(function(){ searchJDWater(url);},100);
+    //2.window.setTimeout(“searchJDWater(”+url+“)”, 100);
+</script>
+</body>
+</html>

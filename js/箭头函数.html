@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>箭头函数</title>
+</head>
+<body>
+<script>
+    getJSON("/post/1.json").then(function(post) {
+        return getJSON(post.commentURL);
+    }).then(function funcA(comments) {
+        console.log("resolved: ", comments);
+    }, function funcB(err){
+        console.log("rejected: ", err);
+    });
+
+    // 箭头函数
+    getJSON('/post/1.json').then( post => getJSON(post.commentURL)).then(
+        comments =>  console.log("resolved: ", comments),
+        err =>  console.log("rejected: ", err)
+    )
+</script>
+</body>
+</html>

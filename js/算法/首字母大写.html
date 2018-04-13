@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首字母大写</title>
+</head>
+<body>
+    <script>
+        //  每一个单词的首字母大写
+        // substr substring
+        function titleCase(str) {
+            var arr = str.split(" ");
+            var str1 = ""
+            for(var i = 0 ; i < arr.length;i ++){ //截字符串
+                if (i===arr.length-1) {
+                    str1 = str1 + arr[i].substr(0,1).toLocaleUpperCase()+arr[i].substr(1,arr[i].length-1);
+                }else {
+                    str1 = str1 + arr[i].substr(0,1).toLocaleUpperCase()+arr[i].substr(1,arr[i].length-1)+ " ";
+                }
+            }
+            console.log(str1);
+        }
+
+        titleCase("I'm a little tea pot");
+    </script>
+</body>
+</html>

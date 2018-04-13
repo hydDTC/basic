@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>回文算法</title>
+</head>
+<body>
+            <script>
+                // 确定回文  忽略大小写 标点符号 空格
+                // 我觉得可以理解成正逆都是一样的
+                function test(num){
+                  return num=== num.split('').reverse().join('')
+                }
+//                var flag = test("racecar");
+                var flag = test("raceyar");
+                console.log(flag)
+            </script>
+</body>
+</html>

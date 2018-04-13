@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组乱序</title>
+</head>
+<body>
+            <script>
+                var arr = [1,10,55,2,1,89,34,21,8,0,45];
+                //方法一：
+//                arr.sort(function(a,b){
+//                    return Math.random()>0.5? -1 : 1;
+//                })
+//                console.log(arr); //排序会影响原来的数组
+
+                //方法二：
+                if (!Array.prototype.shuffle) {
+                    Array.prototype.shuffle = function() {
+                        for(var j, x, i = this.length; i;
+                            j = parseInt(Math.random() * i), x = this[--i], this[i] = this[j], this[j] = x);
+                        return this;
+                    };
+                }
+                arr.shuffle();
+                console.log(arr);
+
+
+            </script>
+</body>
+</html>

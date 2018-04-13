@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var filespack = ['a','b','c','j']
+//var filespack = ['a']
+
+    var oldPackage = ['a','b','c','d']
+    for(var i=0;i< filespack.length;i++){
+        for(var j=0;j< oldPackage.length;j++){
+            if(oldPackage[j]===filespack[i]){
+                filespack.splice(i,1);
+                break;
+            }
+        }
+    }
+    console.log(filespack);
+</script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>this</title>
+</head>
+<body>
+<script>
+
+//    通常意义上this指针指向为最后调用它的对象。这里需要注意的一点就是如果返回值是一个对象，
+//    那么this指向的就是那个返回的对象，如果返回值不是一个对象那么this还是指向函数的实例，例子如下：
+//  一
+//    function getName(){
+//        this.name = 1;
+//        return {}; // 返回对象
+//    }
+//    var a = new getName;
+//    console.log(a)  //{}
+//    console.log(a.name); //undefined
+
+//二
+//    function getName(){
+//        this.name = 1;
+//        return 2; // 返回非对象
+//    }
+//    var d = new getName;  //new一个对象 this>>>d
+//    console.log(d)  //getName{this.name = 1}
+//    console.log(typeof d)
+//    console.log(d.name); //1
+
+
+// 三
+var util = {
+    name: 2,
+    getName: function(){
+        return this.name;
+    },
+    sub: {
+        name: 3,
+        getName: function(){
+            console.log(this);
+            return this.name
+        }
+    }
+}
+var a = util.getName;
+console.log(a);
+// ƒ (){return this.name;}
+console.log(a()); // 1  a的this为window，所以为window.name
+</script>
+</body>
+</html>

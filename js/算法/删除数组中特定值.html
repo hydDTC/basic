@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>删除数组中特定值</title>
+</head>
+<body>
+<script>
+//    删除数组中的所有的假值。
+//    在JavaScript中，假值有false、null、0、""、undefined 和 NaN
+//    " "是真的值
+
+    function bouncer(arr) {
+      var result =  arr.filter(function(item,index){
+           return Boolean(item) ===true
+       })
+       console.log(result)
+    }
+
+
+    bouncer([7, "ate", "", false,  NaN, 9, " "]);
+</script>
+
+</body>
+</html>

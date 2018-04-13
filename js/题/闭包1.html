@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    for (var i = 0; i < 5; i++) {
+
+        setTimeout(function() {
+            console.log(new Date, i);
+        }, 1000);
+    }
+//    这些定时器都会在 1 秒之后触发，而循环完的输出是立即执行的，显而易见，正确的描述是 B。
+    console.log(new Date, i);
+
+
+//for (let i = 0; i < 5; i++) {
+//    setTimeout(function() {
+//        console.log(new Date, i);
+//    }, 1000);
+//}
+
+</script>
+</body>
+</html>

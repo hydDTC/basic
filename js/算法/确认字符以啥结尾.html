@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>确认字符以什么结尾</title>
+</head>
+<body>
+<script>
+    function confirmEnding(str, target) {
+        var end = str.charAt(str.length-1)
+        console.log(end);
+        if(end === target) {  //这边应该大小写也是要区分的
+          return true;
+        }else{
+            return false;
+        }
+    }
+
+    var flag = confirmEnding("Bastian", "n");
+    console.log(flag)
+</script>
+
+</body>
+</html>
