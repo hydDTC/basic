@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise</title>
+</head>
+<body>
+<script>
+    var promise1 = new Promise(function(resolve, reject) {
+        console.log(resolve);
+        console.log(reject);
+        // 2秒后置为接收状态
+        setTimeout(function() {
+//            resolve('success');
+            reject('fail')
+        }, 2000);
+    });
+    console.log(promise1)
+
+    promise1.then(function(data) {
+        console.log(data); // success
+    }, function(err) {
+        console.log(err); // 不执行
+    }).then(function(data) {
+        // 上一步的then()方法没有返回值
+        console.log('链式调用：' + data); // 链式调用：undefined
+    }).then(function(data) {
+        // ....
+    });
+</script>
+</body>
+</html>

@@ -10,35 +10,35 @@
             height: 550px;
             background-color:green;
         }
-        /*.inner{*/
-            /*text-align: center; !*让div内部文字居中*!*/
-            /*line-height:350px;*/
-            /*background-color: yellow;*/
-            /*border-radius: 20px;*/
-            /*width: 300px;*/
-            /*height: 350px;*/
-            /*margin: auto;*/
-            /*position: absolute;*/
-            /*!*如果嵌套在div中top等值就必须为0*!*/
-            /*!*如果以body体为主，top等值就没有关系，只要都相等就可以*!*/
-            /*top: 0px;*/
-            /*left: 0px;*/
-            /*right: 0px;*/
-            /*bottom:0px;*/
-        /*}*/
-
-        /*仍然是绝对布局，让left和top都是50%，这在水平方向上让div的最左与屏幕的最左相距50%，垂直方向上一样， 所以再用transform向左（上）平移它自己宽度（高度）的50%，也就达到居中效果了，效果图和上方相同。*/
         .inner{
-            text-align: center;
-            background-color: #fff;
+            text-align: center; /*让div内部文字居中*/
+            line-height:350px;
+            background-color: yellow;
             border-radius: 20px;
             width: 300px;
             height: 350px;
+            margin: auto;
             position: absolute;
-            left: 50%;
-            top: 50%;
-            transform: translate(-50%,-50%);
+            /*如果嵌套在div中top等值就必须为0*/
+            /*如果以body体为主，top等值就没有关系，只要都相等就可以*/
+            top: 0px;
+            left: 0px;
+            right: 0px;
+            bottom:0px;
         }
+
+        /*仍然是绝对布局，让left和top都是50%，这在水平方向上让div的最左与屏幕的最左相距50%，垂直方向上一样， 所以再用transform向左（上）平移它自己宽度（高度）的50%，也就达到居中效果了，效果图和上方相同。*/
+        /*.inner{*/
+            /*text-align: center;*/
+            /*background-color: #fff;*/
+            /*border-radius: 20px;*/
+            /*width: 300px;*/
+            /*height: 350px;*/
+            /*position: absolute;*/
+            /*left: 50%;*/
+            /*top: 50%;*/
+            /*transform: translate(-50%,-50%);*/
+        /*}*/
     </style>
 </head>
 <body>

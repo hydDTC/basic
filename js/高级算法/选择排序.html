@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>选择排序</title>
+</head>
+<body>
+    <script>
+//        JS选择排序
+//        原理
+//        首先从原始数组中找到最小的元素，并把该元素放在数组的最前面，然后再从剩下的元素中寻找最小的元素，放在之前最小元素的后面，知道排序完毕。
+            var example=[8,94,15,88,55,76,21,39];
+            function test(arr){
+                for(var j = 0; j < arr.length; j ++){
+                    // 最小值的初始值
+                    var temp = arr[j];
+                    var min = arr[j];
+                    var index = j;
+                    for(var  i = j; i <arr.length; i++ ){
+                        if(arr[i] < min){
+                            min = arr[i];
+                            index = i;   //这是最小值的下标
+                        }
+                    }
+                    arr[j] = arr[index];  //交换位置
+                    arr[index] = temp;
+                }
+                return arr;
+            }
+            var xx = test(example);
+            console.log(xx)
+
+    </script>
+</body>
+</html>

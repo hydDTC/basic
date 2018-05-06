@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>object.assign</title>
+</head>
+<body>
+<script>
+    const object1 = {
+        a: 1,
+        b: 2,
+        c: 3
+    };
+
+    const object2 = Object.assign({c: 4, d: 5}, object1);
+
+    console.log(object2.c, object2.d);
+    object2.c = 'dd';
+    console.log(object1.c)
+
+
+    // 浅拷贝
+    var obj = { a: 1 };
+    var copy = Object.assign({}, obj);
+    console.log(copy); // { a: 1 }
+    copy.a = 'vvv';
+    console.log(obj)
+
+
+
+//深拷贝
+    var xx = {b: 2};
+    var c = xx;
+    c.b  = 'ggg';
+    console.log(xx);
+
+
+    // b里面的对象是一个对象 这个是引用  深
+    let obj1 = { a: 0 , b: { c: 0}};
+    let obj2 = Object.assign({}, obj1);
+    obj2.b.c = 9;
+    obj2.a = 1;
+    console.log(obj1)
+    console.log(obj2)
+//    console.log(JSON.stringify(obj2));
+
+
+    //各不相关
+    obj1 = { a: 0 , b: { c: 0}};
+    let obj3 = JSON.parse(JSON.stringify(obj1));
+    obj1.a = 4;
+    obj1.b.c = 4;
+    console.log(JSON.stringify(obj3));
+
+
+    // deep
+    var o1 = { a: 1 };
+    var o2 = { b: 2 };
+    var o3 = { c: 3 };
+
+    var obj = Object.assign(o1, o2, o3);
+    obj.a = 4;
+    console.log(obj); // { a: 1, b: 2, c: 3 }
+    console.log(o1);  // { a: 1, b: 2, c: 3 }, 注意目标对象自身也会改
+
+
+    var o1 = { a: 1, b: 1, c: 1 };
+    var o2 = { b: 2, c: 2 };
+    var o3 = { c: 3 };
+
+    var obj = Object.assign({}, o1, o2, o3);
+    console.log(o3)
+    console.log(obj); // { a: 1, b: 2, c: 3 }
+</script>
+</body>
+</html>

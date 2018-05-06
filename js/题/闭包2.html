@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>闭包</title>
+</head>
+<body>
+<script>
+    var funcs = []
+    for (let i = 0; i < 10; i++) {
+        funcs.push(function() {
+            console.log(i)
+        })
+    }
+    funcs.forEach(function(func) {
+        func()
+    })
+//    console.log(funcs)
+
+
+    function action(num = 200) {
+        console.log(num)
+    }
+    action() //200
+    action(300) //300
+    action(0) //0
+
+    var name = 'hyd'
+    console.log(`hello ${name}`)
+
+    const arr = ['red','green'];
+    const arr1 = ['ff','gg'];
+    console.log(...arr,...arr1)
+    const str = [...arr, 'blue','orange'];
+    console.log(str)
+
+    const number = [1,2,3,4,5]
+    const [one, ...rest] = number
+    console.log(rest) //2,3,4,5
+
+    for (var i = 0; i < 5; i++) {
+        (function() {
+            setTimeout(function() {
+                console.log(i);
+            }, i * 1000);
+        })(i);
+    }
+
+    for (var i = 0; i < 5; i++) {
+        setTimeout( (function(i) {
+            console.log(i);
+        })(i), i * 1000);
+    }
+</script>
+</body>
+</html>

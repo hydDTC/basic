@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>深复制浅复制</title>
+    <script src="assets/jquery.min.js"></script>
+</head>
+<body>
+<script>
+    //  深拷贝  地址不一样
+    //  浅拷贝 地址引用
+    var obj = {
+        a:1,
+        b:2,
+        c:{
+            d:4
+        }
+    }
+    //var c1 = $.extend(true,{},obj)   //a,cd都不变
+//    var c1 = $.extend(false,{},obj);  // a不变  ，cd变
+
+//    console.log(c1)
+//    obj.a = 4;
+//    console.log(c1);
+//    obj.c.d = 7;
+//    console.log(c1)
+
+    var apps = [ {name:'ssss',arr:[]},{name:'yyy',arr:[]} ]
+//    var xx = $.extend(false,{},apps);  //name变
+//      var xx = $.extend(true,{},apps);  // name不变
+    var xx = Object.extend(true,{},apps);
+    apps[0].name = 'rrr';
+    console.log(xx)
+
+
+    // 非严格模式下
+// 函数中的局部变量
+    (function () {
+        var a = b = 3;
+    }())
+    console.log(typeof a)
+    console.log(a)
+</script>
+
+</body>
+</html>
