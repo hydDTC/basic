@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>all</title>
+</head>
+<body>
+<script>
+    // 小明有闲钱1000
+    var p1 = new Promise(function(res, rej) {
+        res(1000);
+    });
+    // 小山墨迹半天拿出500
+    var p2 = new Promise(function(res) {
+        setTimeout(function() {
+            res(500);
+        }, 200);
+    });
+    // 小峰高富帅拿了3000
+    var p3 = Promise.resolve(3000);
+    // 前男友小光拿出了1000
+    var p4 = Promise.resolve(1000);
+    // 小智知小红乃绿婊，直接拒绝
+    var p5 = Promise.reject('no').catch(function() {return 0});  // reject是第二个function，这边调用catch
+    var p = Promise.all([p1, p2, p3, p4, p5]);
+    p.then(function(results) {
+        console.log(results)     //[1000, 500, 3000, 1000, 0]
+        var sum = results.reduce(function(a, b) { return a + b });  //数组总和 参数是一个function
+        return sum    //有return 才有下面这个值
+    }).then(function(sum) {
+        alert(sum);
+    });
+</script>
+</body>
+</html>

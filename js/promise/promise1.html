@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>promise1</title>
+</head>
+<body>
+<script>
+    var p = new Promise(function(resolve, reject) {
+        // 首先resolve函数的参数可以是一个决议结果值，
+        // 也可以是另外一个promise（小亮的承诺）。其实不只是promise只要对象有then方法即可。
+        resolve(new Promise(function(res, rej) {
+            res(500);
+        }));
+    });
+    p.then(function(value) {
+        alert(value + ', good boy!');
+        return value;
+    }).then(function(value) {
+        alert(value + ', go getting food');
+    });
+</script>
+</body>
+</html>

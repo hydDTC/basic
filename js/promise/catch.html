@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>catch</title>
+</head>
+<body>
+<script>
+    var p = new Promise(function(resolve,reject){
+        reject(new Error('ooo'))
+    }).catch(function(){
+        return 0;   // 这边对错误进行处理 捕捉到错误后 then的第一个方法
+    })
+    p.then(function(value){
+      console.log(value)
+    },function(value){
+        console.log(value)
+    })
+</script>
+</body>
+</html>
