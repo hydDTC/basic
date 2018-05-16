@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bigNumber</title>
+</head>
+<body>
+            <script>
+                var xx = 200000000000000000000000000000000000000002;
+                var yy = 200000000000000000000000000000000000500000;
+                console.log(xx + yy);
+                var xstr = xx.toLocaleString();
+                console.log(xstr)
+                console.log(xstr.length);
+                var ystr = yy.toLocaleString()
+                console.log(ystr);
+                console.log(ystr.length)
+                var max ;
+                var min;
+                if(xstr.length >= ystr.length){
+                   max = xstr;
+                   min = ystr
+                }else{
+                    max = ystr;
+                    min = xstr;
+                }
+                // 一个  一个相加  进位要考虑
+                function test(max){
+                    for(var i = 0; i < max.length; i ++ ){
+                           if(min.charAt(i)){
+                               var num = Number( max[i] ) + Number ( min [i] );
+                               if (num > ){
+
+                               }
+                               num >= 10 ? Number ( (num + '').charAt(0) ) : num;
+                           }
+                    }
+
+                }
+                test(max);
+            </script>
+</body>
+</html>

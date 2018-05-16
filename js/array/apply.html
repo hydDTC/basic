@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apply</title>
+</head>
+<body>
+<script>
+    function  test(a,b,c) {
+        return a+b+c;
+    }
+    var arr = [1,2,3,4]
+
+//    var result =  test.apply(null,arr);
+    var result = test(...arr)
+    console.log(result)
+
+
+    var xx = [11,13,15,12]
+//    var xx = Math.max(11,13,15);
+    var xx = Math.max.apply(null,xx);
+    console.log(xx)
+
+
+</script>
+
+</body>
+</html>

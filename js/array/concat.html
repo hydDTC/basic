@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>concat</title>
+</head>
+<body>
+<script>
+     var arr = [1,2];
+//     var arr1 = arr.concat();
+//     console.log(arr1)
+//     arr1[0] = 8;
+//     console.log(arr1)
+//     console.log(arr)
+      const arr1 = [...arr];
+      console.log(arr1)
+      arr1[0] = 0;
+      console.log(arr1)
+      console.log(arr)
+
+    // 数组里面有对象  浅复制
+    var a = [{name:'hyd',age:'20'},{name:'cdz',age:'21'},{name:'ggg',age:'28'}];
+      var b = [...a];
+      console.log(b);
+      b[0].name = 'hhh';
+      console.log(a)
+
+</script>
+</body>
+</html>

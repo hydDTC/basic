@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>prototype</title>
+</head>
+<body>
+<script>
+    // prortotype是属于 函数的
+    // 孩子自己有的用自己的  没有的顺着原型链找寻
+      function Animal(name,age) {
+           this.name = name;
+           this.age = age;
+      }
+      //
+      function Cat(name,sex) {
+         this.name = name;
+         this.sex = sex;
+
+      }
+      Cat.prototype.eat = function(){
+          alert('我是一只猫')
+      }
+      Cat.prototype.type="猫科动物"
+      Cat.prototype  = new Animal('hyd',13);  //Cat.prototype  = new Animal('hyd',13); 原型链指向变了
+      console.log(Cat.prototype.type) // undefined
+      console.log(Cat.prototype.constructor);  //构造函数
+      Cat.prototype.type="动物"
+      var cat = new Cat('cdz','男');
+      console.log(cat.name)  //cdz
+      console.log(cat.age)  //13
+       console.log(cat.type)  //动物
+
+
+      // 原型链 父亲改变  孩子才会变  孩子改变 父亲不会变
+      //__proto__ 是属于对象的
+      var obj = {
+          name:'hyd'
+      }
+      var b = {}
+      b.__proto__ = obj;
+      console.log(b);
+      obj.name = 'cdz';
+      console.log(b)
+      b.name = 'fff';
+      console.log(b);
+      console.log(obj)
+
+    // apply call 对应的是函数
+</script>
+</body>
+</html>

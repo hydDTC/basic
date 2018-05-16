@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>flex</title>
+    <style>
+        .parent{
+            height:300px;
+            display:flex;
+            align-items:center;
+            justify-content: center;
+            border:1px solid red;
+        }
+        .inner{
+            width:100px;
+            height:100px;
+            background-color:green;
+        }
+    </style>
+</head>
+<body>
+<!--子元素的float、clear和vertical-align属性将失效-->
+    <div class="parent">
+        <div class="inner">
+            哈哈哈
+        </div>
+    </div>
+</body>
+</html>
