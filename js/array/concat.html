@@ -19,11 +19,19 @@
       console.log(arr)
 
     // 数组里面有对象  浅复制
-    var a = [{name:'hyd',age:'20'},{name:'cdz',age:'21'},{name:'ggg',age:'28'}];
+       var a = [{name:'hyd',age:'20'},{name:'cdz',age:'21'},{name:'ggg',age:'28'}];
       var b = [...a];
       console.log(b);
       b[0].name = 'hhh';
       console.log(a)
+
+
+
+    const dd = [1,2,3];
+      const ff = [1,2,3]
+     dd[0] = 9;
+      console.log(ff)
+
 
 </script>
 </body>

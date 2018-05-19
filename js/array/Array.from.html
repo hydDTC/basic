@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Array.from</title>
+</head>
+<body>
+<script>
+    let arrayLike = {
+        '0': 'a',
+        '1': 'b',
+        '2': 'c',
+        length: 3
+    };
+    var xx = Array.from(arrayLike)
+    console.log(arrayLike)
+    console.log(xx)
+
+
+
+    let obj = {
+        'name':'hyd',
+        'age':'cdz',
+        length: 2
+    }
+//    var yy = Array.from(obj)
+//    console.log( yy )
+    console.log(Array.prototype.slice.call(obj))
+
+</script>
+
+</body>
+</html>
