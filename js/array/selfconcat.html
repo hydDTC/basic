@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>selfconcat</title>
+</head>
+<body>
+
+    <script>
+        // 传递一个参数
+        Array.prototype.selfConcat = function(a,b){
+            console.log(this)
+        }
+        var arr = [1,2,3];
+        var arr1 = [11,22,33];
+        arr.selfConcat(arr1)
+
+    </script>
+
+</body>
+</html>

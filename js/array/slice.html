@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 类数组必须有length
+    // key 必须是数字
+    var obj = {
+        '0': 'hyd',
+        '1':'cdz',
+        length:2
+    }
+       var xx = Array.prototype.slice.call(obj)
+       console.log(xx)
+
+</script>
+</body>
+</html>

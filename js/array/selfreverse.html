@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>reverse</title>
+</head>
+<body>
+<script>
+
+    Array.prototype.selfReverse = function (){
+       var xx = parseInt(this.length / 2);
+       for(var i = 0; i < this.length; i++){
+           if(i === xx){
+               break;
+           }
+           var temp = this[i];
+           this[i] = this[this.length-1-i];
+           this[this.length-1-i] = temp;
+       }
+       return this;
+    }
+    var arr = [11,22,33,44];
+    arr.selfReverse()
+    console.log(arr)
+</script>
+
+</body>
+</html>
