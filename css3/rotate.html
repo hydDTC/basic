@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>rotate</title>
+    <style>
+     .one{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid red;
+         transform:rotate(45deg);
+     }
+     .two{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid red;
+         transform:rotate(90deg);
+     }
+     .three{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid red;
+         transition:transform 2s;
+     }
+     .three:hover{
+         transform:rotate(180deg);
+     }
+     .four{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid red;
+         transform:rotate(270deg);
+     }
+     .five{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid red;
+         transform:rotate(360deg);
+     }
+     .six{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid red;
+         transform:rotate(0deg);
+     }
+     .seven{
+         width:0;
+         height:0;
+         border-left:50px solid transparent;
+         border-right: 50px solid transparent;
+         border-bottom: 100px solid yellow;
+         transform:rotate(-270deg);
+     }
+    </style>
+</head>
+<body>
+        <div class='one'></div>
+        <hr>
+        <div class='two'></div>
+        <hr>
+        <div class='three'></div>
+        <hr>
+        <div class='four'></div>
+        <hr>
+        <div class='five'></div>
+        <hr>
+        <div class='six'></div>
+        <hr>
+        <div class='seven'></div>
+</body>
+</html>

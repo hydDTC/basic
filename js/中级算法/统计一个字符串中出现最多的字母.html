@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 对象的思想
+        var str = 'wqeqwhixswiqhdxsq';
+        var obj = {};
+        for(var i = 0; i < str.length; i ++ ){
+            if(!obj[str.charAt(i)]){
+                obj[str.charAt(i)] = 1;
+            }else{
+                // ++
+                obj[str.charAt(i)] = ++ obj[str.charAt(i)];
+            }
+        }
+        console.log(obj);
+    // 初始值的重要性
+        var max = 0;
+        var ind = '';
+        for(var item in obj){
+            if (obj[item] >= max){
+                max = obj[item];
+                ind = item;
+            }
+        }
+        console.log(ind)
+
+
+</script>
+</body>
+</html>
