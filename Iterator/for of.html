@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        //本质就是  遍历器
+         var arr = [11,22,33,44];
+         arr.foo = 'hyd'   //索引是foo
+         // for...of循环调用遍历器接口，数组的遍历器接口只返回具有数字索引的属性。这一点跟for...in循环也不一样。
+         for (let x in arr){
+            console.log(x)   //0,1,2,3
+         }
+         for(let y of arr){
+             console.log(y)
+         }
+
+         var obj = {
+             'name':'hyd',
+             'age': 13
+         }
+         obj[Symbol.iterator] = ''
+         for (let xx in obj){
+             console.log(xx)
+         }
+         // 类似数组的对象（存在数值键名和length属性）
+//         for (let yy of obj){
+//             console.log(yy)
+//         }
+         // 遍历器生成函数
+        let obj1 = {
+            data: [ 'hello', 'world' ],
+            [Symbol.iterator]() {
+                const self = this;
+                let index = 0;
+                return {
+                    next() {
+                        if (index < self.data.length) {
+                            return {
+                                value: self.data[index++],
+                                done: false
+                            };
+                        } else {
+                            return { value: undefined, done: true };
+                        }
+                    }
+                };
+            }
+        };
+
+        console.log ( [...obj1] )
+
+
+    </script>
+</body>
+</html>

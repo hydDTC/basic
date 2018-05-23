@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    // 有symbol.iterator属性
+    var arr = [11,22,33];
+    console.log(arr)
+    // 没有symbol.iterator属性
+    var obj = {}
+    console.log(obj)
+
+
+    // 遍历器生成函数
+            const obj1 = {
+                [Symbol.iterator] : function () {
+                    return {
+                        next: function () {
+//                            return {
+//                                value: 1,
+//                                done: true
+//                            };
+                            return {value: 'cdz',done:true}
+                        }
+                    };
+                }
+            };
+    console.log(obj1)
+    console.log([...obj1]);
+    console.log(obj1[Symbol.iterator]().next())
+
+
+    //
+    var str = new String("hi");
+    [...str] // ["h", "i"]
+    console.log(...str)
+    str[Symbol.iterator] = function (){
+        return {
+            next:function(){
+                if(this._first){
+                    this._first = false;
+                    return {value :'hyd', done:false}  // boolean
+                }else {
+                    // done是否进行下一次遍历，此次遍历不算数
+                    // one属性是一个布尔值，表示遍历是否结束，即是否还有必要再一次调用next方法。
+                    return {value: 'cdz',done:true}
+                }
+            },
+            _first : true
+        }
+    }
+    console.log([...str]);  // ['hyd']
+</script>
+</body>
+</html>

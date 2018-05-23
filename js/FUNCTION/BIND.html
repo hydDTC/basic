@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+
+        var bar = function(){
+            console.log(this.x);
+        }
+        var foo = {
+            x:3
+        }
+        bar(); // undefined
+        var func = bar.bind(foo);
+        func(); // 3
+        bar.apply(foo)  // 立即调用
+
+</script>
+</body>
+</html>
