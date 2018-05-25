@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>yield</title>
+</head>
+<body>
+
+        <script>
+            function* helloworld(){
+                yield 'hello';
+                yield 'haha';
+                return 'jjj'
+            }
+            var xx = helloworld();
+            //  遍历器对象（Iterator Object）。
+            console.log(xx)
+            console.log(xx.next());  // 惰性求值
+            console.log(xx.next());
+            console.log(xx.next());
+            console.log(xx.next());
+            console.log(xx.next());
+
+            function* gen() {
+                yield  123 + 456;
+            }
+            console.log(gen().next())
+
+
+            function* f() {
+                console.log('执行了！')
+            }
+            var generator = f();
+            console.log(generator)
+            console.log(generator.next())
+
+            //yield表达式只能用在 Generator 函数里面，用在其他地方都会报错。
+
+
+            function* demo() {
+//                console.log('Hello' + yield); // SyntaxError
+//                console.log('Hello' + yield 123); // SyntaxError
+                'Hello' + (yield);
+                console.log('Hello' + (yield)); // OK
+                console.log('Hello' + (yield 123)); // OK
+            }
+            console.log(demo().next())
+
+
+
+
+        </script>
+
+</body>
+</html>

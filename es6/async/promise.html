@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+        <script>
+//            async function f() {
+//                return 'hello world';
+//            }
+//            console.log(f())
+//            f().then(v => console.log(v));
+
+
+//            async function test(){
+//                throw new Error('出错了');
+//            }
+//            test().then(
+//                v => console.log(v),
+//                e => console.log(e)
+//            )
+
+//  正常情况下，await命令后面是一个 Promise 对象。如果不是，会被转成一个立即resolve的 Promise 对象。
+//            async function f1() {
+//                return await 123;
+//            }
+//            f1().then(v => console.log(v))
+
+//            注意，上面代码中，await语句前面没有return，但是reject方法的参数依然传入了catch方法的回调函数。
+//            这里如果在await前面加上return，效果是一样的。
+
+//            async function f2() {
+//                await Promise.reject('出错了');
+//            }
+//            f2().then(v => console.log(v))
+//            .catch(e => console.log(e))
+
+
+//            async function f3() {
+//                await Promise.reject('出错了');
+//                await Promise.resolve('hello world'); // 不会执行
+//            }
+//            f3().then( v => console.log(v)).catch(
+//                 e => console.log(e))
+
+
+
+        </script>
+</body>
+</html>

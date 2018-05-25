@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>后端迟迟不返回数据，前端超时处理</title>
+</head>
+<body>
+
+        <script>
+            // resolve不是promise的终结者，但是一旦状态改变就不可逆，所以时间是5s的不能在输出
+           var p = new Promise((resolve,reject) => {
+               setTimeout(function(){
+                   resolve("超时5s");
+                   },5000);
+               setTimeout(function(){
+                   resolve("超时3s");
+               },3000);
+           })
+
+           p.then(
+                v => console.log(v),
+                e => console.log(e)
+            )
+        </script>
+
+</body>
+</html>
