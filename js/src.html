@@ -1,14 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>src</title>
-</head>
-<body>
-<!--刷新当前页面-->
-<a href="">点击</a>
-<script>
+<div class="form-group flex">
+    <label class="form-label"><span>*</span>下载地址:</label>
+    <div class="form-input" style="width: 520px">
+        <input type="text" [disabled]="!can_modify" class="form-control" [(ngModel)]="campaign.download_link" #download_link="ngModel" placeholder="请填写下载地址（http://）"
+               (ngModelChange)="campaign.click_link = campaign.download_link" pattern="^([hH]{1}[tT]{2}[pP]:\/\/|[hH]{1}[tT]{2}[pP][sS]:\/\/)[\d,a-z,A-Z]+[\w,\W]*$"
+               required [ngClass]="{'has-error':(_valid || download_link.dirty || download_link.touched) && download_link.invalid }"/>
+        <p class="input-error" *ngIf="(_valid || download_link.dirty || download_link.touched) && download_link.invalid">请输入下载地址</p>
+    </div>
 
-</script>
-</body>
-</html>
+</div>
+
+
+
+
+<div class="form-group flex">
+    <label class="form-label"><span>*</span>下载地址:</label>
+    <div class="form-input" style="width: 520px">
+        <input type="text" [disabled]="!can_modify" class="form-control" [(ngModel)]="campaign.download_link" #download_link="ngModel"
+               placeholder="请填写下载地址（http://）" (ngModelChange)="campaign.click_link = campaign.download_link" pattern="^([hH]{1}[tT]{2}[pP]:\/\/|[hH]{1}[tT]{2}[pP][sS]:\/\/)[\d,a-z,A-Z]+[\w,\W]*$"
+               required [ngClass]="{'has-error':(_valid || download_link.dirty || download_link.touched) && download_link.invalid }"/>
+        <p class="input-error" *ngIf="(_valid || download_link.dirty || download_link.touched) && download_link.invalid">请输入下载地址</p>
+    </div>
+</div>

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="assets/jquery.min.js"></script>
+</head>
+<body>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#scroll_div').scrollTop( $('#scroll_div')[0].scrollHeight);
+        // $('#scroll_div').scrollLeft( $('#scroll_div')[0].scrollWidth);
+        document.getElementById('scroll_div').scrollLeft = document.getElementById('scroll_div').scrollWidth
+
+    });
+</script>
+
+<div id="scroll_div" style="overflow-y:scroll; overflow-x:auto;width:100px; height:300px; border:1px solid #F00; white-space: nowrap">
+   想学习效果可参加DIV+CSS培训班学习。想学习效果可参加DIV+CSS培训班学习。想学习效果可参加DIV+CSS培训班学习。
+</div>
+
+</body>
+</html>

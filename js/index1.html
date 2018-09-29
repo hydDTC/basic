@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <!--<script src="echarts/echarts.min.js"></script>-->
+
+    <script src="echart/echarts.min.js"></script>
+</head>
+
+<div id="dataEchart" style="width:200px; height:200px"></div>
+<body>
+<script>
+
+        var unitStr = 'yuan'
+        var dataChar=document.getElementById("dataEchart");
+        var reportChart=echarts.init(dataChar);
+        reportChart.setOption({
+            tooltip : {
+                trigger: 'axis'
+            },
+            legend: {
+                x:"4%",
+                data:['昨天','今天']
+            },
+            toolbox: {
+                show : true,
+                feature : {
+                    mark : {show: true},
+                    dataView : {show: true, readOnly: false},
+                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
+                    restore : {show: true},
+                    saveAsImage : {show: true}
+                }
+            },
+            grid: {
+                left: '4%',
+                right: '4%',
+                bottom: '3%',
+                top:"18%",
+                containLabel: true,
+                backgroundColor:"blue"
+            },
+            calculable : true,
+            xAxis : [
+                {
+                    type : 'category',
+                    boundaryGap : false,
+                    data:[0,0,0,0,0,0],
+                    axisLine:{
+                        lineStyle:{
+                            color: '#bfc4cd'
+                        }
+                    },
+                    splitLine:{
+                        show:true,
+                        lineStyle:{
+                            color: ['#f8f8f8'],
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    splitArea:{
+                        /*show:true
+                         areaStyle:{
+                         color: [
+                         'rgba(249,249,249,0.1)',
+                         'rgba(249,249,249,0.1)'
+                         ]
+                         }*/
+                    }
+                }
+            ],
+            yAxis : [
+                {
+                    type : 'value',
+                    min: 0,
+                    axisLine:{
+                        lineStyle:{
+                            color: '#bfc4cd'
+                        }
+                    },
+                    axisLabel : {
+                        formatter: '{value}'+unitStr
+                    },
+                    splitLine:{
+                        show:true,
+                        lineStyle:{
+                            color: ['#f8f8f8'],
+                            width: 1,
+                            type: 'solid'
+                        }
+                    },
+                    splitArea:{
+                        /*show:true
+                         areaStyle:{
+                         color: [
+                         'rgba(249,249,249,0.1)',
+                         'rgba(249,249,249,0.1)'
+                         ]
+                         }*/
+                    }
+                }
+            ],
+            series : [
+                {
+                    name:'昨天',
+                    type:'line',
+                    smooth:true,
+                    itemStyle:{
+                        normal:{
+                            color: "#30beba" //图标颜色
+                        }
+                    },
+                    lineStyle:{
+                        normal:{
+                            color: "#30beba"  //连线颜色
+                        }
+                    },
+                    data:[0,0,0,0,0,0]
+                },
+                {
+                    name:'今天',
+                    type:'line',
+                    smooth:true,
+                    itemStyle:{
+                        normal:{
+                            color: "#ec79ad" //图标颜色
+                        }
+                    },
+                    lineStyle:{
+                        normal:{
+                            color: "#ec79ad"  //连线颜色
+                        }
+                    },
+                    data:[0,0,0,0,0,0]
+                }
+            ]
+        });
+
+
+
+</script>
+</body>
+</html>

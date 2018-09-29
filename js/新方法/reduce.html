@@ -7,12 +7,32 @@
 <body>
 <script>
 
-    var numbers = [65, 44, 12, 4];
+    // var numbers = [65, 44, 12, 4];
+    // console.log(numbers.reduce((a,b) => a+b))  // 5是准备累加的初始值
 
-    function getSum(total, num) {
-        return total + num;
-    }
-    console.log(numbers.reduce(getSum,5))  // 5是准备累加的初始值
+    // function getSum(total, num) {
+    //     return total + num;
+    // }
+    // console.log(numbers.reduce(getSum,5))  // 5是准备累加的初始
+
+
+    // var obj = [{'name':'hyd','value': 122}, {'name':'hyd1','value': 1}, {'name':'hyd2','value': 2}];
+    // console.log ( obj.reduce((a, b) =>  b.value + a), 0);
+
+    // var obj = [122, 1 ,2 ];
+    // console.log ( obj.reduce((a, b) => a+ b) )
+    //
+    // var obj = [{'value': 122}, {'value': 1}, {'value': 2}];
+    // console.log ( obj.reduce((a, b) => a.value + b.value) )
+
+    var obj = [{'name':'hyd','value': 122}, {'name':'hyd1','value': 1}, {'name':'hyd2','value': 2}]
+    console.log( obj.reduce((a, b) => b.value + a, 0) )
+    console.log ( obj.reduce((a, b) =>  b.value + a, 0));
+    var sum = obj.reduce((prev, cur) => cur.value + prev, 0);
+    console.log(sum)
+
+
+
 
 </script>
 

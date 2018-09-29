@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #canvas {
+            /*margin: 100px 300px;*/
+        }
+    </style>
+</head>
+<body>
+
+                    <canvas id="canvas" width="300px" height="300px" style="border:1px solid red"></canvas>
+
+                    <input type="range" [min]="minScale" max="3.0" step="0.01" value="1" id="range">
+
+                    <div>
+                        <img id="source" src="../assets/img/hyd.jpg" width="300" height="300">
+                    </div>
+
+
+                    <script>
+                        var canvas = document.getElementById("canvas");
+                        var ctx = canvas.getContext("2d");
+
+                        ctx.beginPath();
+                        ctx.arc(150, 150, 150, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        ctx.clip();  // 裁剪了  就镂空了
+
+                        var image = document.getElementById('source');
+                        ctx.drawImage( image,0, 0, 300, 300);
+
+
+
+                        var range = document.getElementById('range');
+                        range.addEventListener("input", rangeValue);
+                        function rangeValue() {
+                            console.log(range.value)
+                        }
+
+                    </script>
+
+</body>
+</html>
