@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #parent{
+            width: 220px;
+            height:370px;
+            border: 1px solid black;
+            /*overflow: hidden;*/
+        }
+        #one {
+            width: 220px;
+            height:1110px;
+            border: 1px solid red;
+            transition: all 1.5s;
+            /*overflow: hidden;*/
+        }
+        img {
+
+        }
+        button {
+            float: right;
+            background-color: gray;
+            color: black;
+        }
+        button:hover{
+            background-color: red;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+<div id="parent">
+    <!--内层嵌套-->
+            <div id="one">
+                <img src="../assets/img/img1-1.jpg" width="220" height="370" id="xx">
+
+                <img src="../assets/img/img1-2.jpg" width="220" height="370">
+
+                <img src="../assets/img/img2-1.jpg" width="220" height="370">
+            </div>
+</div>
+
+
+            <button  id="first" >第一张</button>
+            <button  id="second">第二张</button>
+            <button  id="third">第三张</button>
+
+            <script>
+                    var one = document.getElementById('one');
+                    var first = document.getElementById('first');
+                    var second = document.getElementById('second');
+                    var third = document.getElementById('third');
+                    var btns = document.getElementsByTagName('button');
+                    console.log(btns)
+                    var children = one.children;
+                    var par_index = true;
+                    var i = 0;  // 全局变量
+
+
+
+
+                    var time = setInterval( test, 1500 )
+
+                    function test() {
+
+
+                        if (par_index) {    // 单独变量控制自动运转
+                            if(i < children.length - 1) {
+                                i++;
+                                one.style.transform = `translate(0, ${-370 * i}px)`
+                            } else {
+                                par_index = !par_index
+                            }
+                        }
+
+                        if (!par_index) {
+                            if (i > 0) {
+                                i--;
+                                one.style.transform = `translate(0, ${-370 * i}px)`
+                            } else {
+                                par_index = !par_index
+                            }
+                        }
+
+
+
+
+                    }
+
+
+
+                    first.addEventListener("mouseenter",function() {
+                        clearInterval(time)
+                        i = 0;
+                        one.style.transform = `translate(0, ${-370 * i}px)`
+                    });
+
+                    first.addEventListener("mouseleave",function() {
+                        time = setInterval( test, 1500 )
+                    });
+
+
+
+                    second.addEventListener("mouseenter",function() {
+                        clearInterval(time)
+                        i = 1;
+                        one.style.transform = `translate(0, ${-370 * i}px)`
+                    });
+
+                    second.addEventListener("mouseleave",function() {
+                        time = setInterval( test, 1500 )
+                    });
+
+                    third.addEventListener("mouseenter",function() {
+                        clearInterval(time)
+                        i = 2;
+                        one.style.transform = `translate(0, ${-370 * i}px)`
+                    });
+
+                    third.addEventListener("mouseleave",function() {
+                        time = setInterval( test, 1500 )
+                    });
+
+
+
+
+
+
+            </script>
+</body>
+</html>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+                    <canvas id="canvas" width="300px" height="300px" style="border:1px solid red"></canvas>
+
+                    <div>
+                        <img id="source" src="../assets/img/hyd.jpg">
+                    </div>
+
+                    <script>
+                        var canvas = document.getElementById("canvas");
+                        var ctx = canvas.getContext("2d");
+
+                        ctx.beginPath();
+                        ctx.arc(150, 150, 150, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        ctx.clip();  // 裁剪了  就镂空了
+
+                        var image = document.getElementById('source');
+                        ctx.drawImage( image, 200, 200, 200, 200,0, 0, 300, 300);
+                        //按照图片的原尺寸裁剪
+
+
+
+                    </script>
+
+</body>
+</html>
