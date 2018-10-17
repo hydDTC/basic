@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+      *{
+            padding:0;
+            margin:0;
+        }
+       html, body {
+         height:100%;
+       }
+       #parent {
+           width:100%;
+           height: 100%;
+           position: relative;
+           background: red;
+           overflow:auto;
+       }
+       #content {
+           width:100%;
+           height: 4000px;
+           position: relative;
+           background: yellow;
+           overflow:auto;
+           opacity:0.6;
+       }
+       #login{
+           position:absolute;
+           top: 200px;
+           width:100%;
+           height:68px;
+           background-color: purple;
+       }
+       /* #footer{
+           position:absolute;
+           width:100%;
+           height:68px;
+           background-color: red;
+       } */
+       @media screen and (max-width: 1350px) {
+           #content, #login{
+               min-width: 1366px;
+           }
+        }
+       
+    </style>
+</head>
+<body>
+    <div>lalallalalalla</div>
+     <div id="parent">
+         <div id="content"></div>
+         <div id="login"></div>
+         <!-- <div id="footer"></div> -->
+     </div>
+</body>
+
+
+    <script>
+     var parent = document.getElementById('parent');
+     var login = document.getElementById('login');
+
+     parent.addEventListener('scroll', function(event){
+         console.log('scrollTop')
+         console.log(event.target.scrollTop)
+
+         console.log('offsetHeight')
+         console.log( document.body.offsetHeight)
+
+        //  console.log('cliebtHeight')
+        //  console.log(  document.body.clientHeight)
+
+         console.log('scrollHeight')
+         console.log( event.target.scrollHeight)
+         if ( (event.target.scrollTop + document.body.offsetHeight) <= event.target.scrollHeight) {
+             console.log('dibu')
+             console.log('%%%%%%%%%%%%%%%%%%%%%%%%')
+             console.log(event.target.scrollTop )
+             console.log(document.body.offsetHeight)
+            login.style.top = (event.target.scrollTop + document.body.offsetHeight - 168) + 'px';
+         }
+
+     })
+
+    
+    
+    
+    </script>
+</html>
