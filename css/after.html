@@ -2,9 +2,45 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style>
+
+    </style>
 </head>
 <body>
-$END$
+<script>
+    var ss = [11,22,33];
+    var sum1 = ss.reduce(function(prev, cur, index) {
+        console.log(index);  //1
+        console.log(prev)   //11
+        console.log(cur)   //22
+        return cur ;
+    },0);
+    console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+    console.log(sum1)
+    console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%')
+    var result = [
+        {
+            subject: 'math',
+            score: 88
+        },
+        {
+            subject: 'chinese',
+            score: 95
+        },
+        {
+            subject: 'english',
+            score: 80
+        }
+    ];
+    // var sum = result.reduce(function(prev, cur, index) {
+    //     console.log(index);
+    //     console.log(prev)
+    //     return cur.score ;
+    //     // return cur.score + prev;
+    // });
+    // console.log('#########################')
+    // console.log(sum)
+</script>
 </body>
 </html>

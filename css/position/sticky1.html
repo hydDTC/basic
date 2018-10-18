@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        ul {
+            height:300px;
+            overflow: scroll;
+        }
+        ul li {
+           border:1px solid red;
+        }
+        ul li span {
+            display: block;
+        }
+        ul li div:nth-child(1){
+            position: sticky;
+        }
+    </style>
+</head>
+<body>
+<!-- 无效呀 div跟ul又没有关系  -->
+    <ul>
+        <li>
+            <div>title111111111111111</div>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+        </li>
+        <li>
+            <div>title2222222222222</div>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+        </li>
+        <li>
+            <div>title333333333333333</div>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+        </li>
+        <li>
+            <div>title444444444444444</div>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+            <span>title</span>
+        </li>
+    </ul>
+</body>
+</html>

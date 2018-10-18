@@ -2,9 +2,34 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>$Title$</title>
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            border:20px solid yellow;
+            margin:20px;
+            padding:40px;
+            background:#d1d1d1;
+        }
+        #test {
+            width:400px;
+            height:200px;
+            padding:20px;
+            background:blue;
+            border:5px solid red;
+        }
+    </style>
 </head>
 <body>
-$END$
+<div id="test"></div>
+<script>
+    // 盒模型
+    // offsetWidth = border-left + border-right + padding-left+padding-right+元素本身的宽度;
+    // offsetHeight = border-top + border-bottom + padding-top+padding-bottom+元素本身的高度；
+    var test = document.getElementById("test");
+    test.innerHTML = "<p>offsetWidth:" + test.offsetWidth + "</p>" +
+        "<p>offsetHeight:"+test.offsetHeight+"</p>"+
+        "<p>offsetLeft:"+test.offsetLeft+"</p>"+
+        "<p>offsetTop:"+test.offsetTop+"</p>";
+</script>
 </body>
 </html>

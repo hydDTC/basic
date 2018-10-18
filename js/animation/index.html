@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style>
+        #parent{
+            width: 220px;
+            height:370px;
+            border: 1px solid black;
+            /*overflow: hidden;*/
+        }
+        #one {
+            width: 220px;
+            height:900px;
+            border: 1px solid red;
+            transition: all 1.5s;
+        }
+        img {
+
+        }
+    </style>
+</head>
+<body>
+
+            <div id="parent">
+                <div id="one">
+                    <img src="../assets/img/img1-2.jpg" width="220" height="370" id="img1">
+
+                    <img src="../assets/img/img2-1.jpg" width="220" height="370">
+                </div>
+            </div>
+
+
+        <script>
+            // one.style.transform = `translate(0, ${-370 * 1}px)`
+            // img1.style.transform = `translate(0, ${-170 * 1}px)`
+            //
+            img1.style.marginTop= '-370px';
+        </script>
+</body>
+</html>
