@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面滚动的时候自动切换导航栏</title>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        ul {
+            position:fixed;
+            left:0;
+            top: 0;
+        }
+        ul > li {
+            border: 1px solid black;
+            margin-left: 10px;
+            display: inline-block;
+            background-color: lightpink;
+            text-align: center;
+            width:100px;
+        }
+        .parent {
+            position: absolute;
+            left:0;
+            right: 0;
+            top: 0 ;
+            bottom: 0;
+            margin-top: 100px;
+            overflow: auto;
+            transition: all 1s;
+        }
+        .parent > div {
+            width:100%;
+            height: 300px;
+        }
+        .one {
+            background-color: red;
+        }
+        .two {
+            background-color: orange;
+        }
+        .three {
+            background-color: yellow;
+        }
+        .four {
+            background-color: green;
+        }
+        .five {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+    <ul id="title">
+        <li onclick="skip(0)">tab1</li>
+        <li onclick="skip(1)">tab2</li>
+        <li onclick="skip(2)">tab3</li>
+        <li onclick="skip(3)">tab4</li>
+        <li onclick="skip(4)">tab5</li>
+    </ul>
+
+
+    <div class="parent" id="parent">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+    </div>
+
+    <script>
+        var parent = document.getElementById('parent');
+        var title = document.getElementById('title');
+        var flag = true;
+        var num = 0;
+        /* offsetTop是距离最近的position的距离  */
+        parent.addEventListener('scroll', function(event) {
+            console.log(event.target.scrollTop)
+            // 当滚动的距离 在这个标签的 offsetTop和高度之间
+            if (flag) {
+                console.log('falg')
+                for ( let i = 0; i < parent.children.length;  i ++ ) {
+                    title.children[i].style.backgroundColor = 'lightpink';
+                    if (  (event.target.scrollTop >= parent.children[i].offsetTop)   &&  (event.target.scrollTop< (parent.children[i].offsetTop + parent.children[i].offsetHeight))  ) {
+                        // 这边要是angular和vue就可以双向数据处理  ngClass 等
+                        title.children[i].style.backgroundColor = 'red';
+                    }
+                }
+            } else {
+                console.log('falg')
+                for ( let i = 0; i < parent.children.length;  i ++ ) {
+                    title.children[i].style.backgroundColor = 'lightpink';
+                }
+                console.log(title.children[num])
+                title.children[num].style.backgroundColor = 'red';
+            }
+        })
+
+        function skip(number) {
+
+            console.log(parent.scrollHeight)
+            console.log(parent.children[number].offsetTop)
+            // 这边最长的scrollTop也就是662px，但是我的offsetTop有1200px
+            if(parent.children[number].offsetTop > parent.scrollTop) {
+                console.log(parent.scrollTop)
+                parent.scrollTop --;
+                console.log(parent.scrollTop)
+                console.log('jinlai')
+                flag = false; // 说明滚动条已经到底部了
+                num = number;
+                console.log(num)
+            } else {
+                parent.scrollTop =  parent.children[number].offsetTop;
+            }
+
+            // parent.scrollTop =  parent.children[number].offsetTop + 5;
+            // console.log(parent.scrollTop);
+            // title.children[number].style.backgroundColor = 'red';
+        }
+    </script>
+
+</body>
+</html>
