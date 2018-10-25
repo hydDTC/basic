@@ -73,53 +73,42 @@
     </div>
 
     <script>
+        /* 公式： parent.scrollerTop = parent.scrollHeight - parent.offsetHeight : 说明到达底部*/
+
         var parent = document.getElementById('parent');
         var title = document.getElementById('title');
-        var flag = true;
-        var num = 0;
+        var flag = true; // 控制是否超过了scrollerTop总值
+        var num = 0;  // 当滚动条滚动的scrollerTop < 标签的offsetTop  全局tab
+        parent.scrollTop = 5;  // 初始值默认第一个tab被选中
         /* offsetTop是距离最近的position的距离  */
         parent.addEventListener('scroll', function(event) {
-            console.log(event.target.scrollTop)
-            // 当滚动的距离 在这个标签的 offsetTop和高度之间
             if (flag) {
-                console.log('falg')
                 for ( let i = 0; i < parent.children.length;  i ++ ) {
                     title.children[i].style.backgroundColor = 'lightpink';
+                    // 当滚动的距离 在这个标签的 offsetTop和高度之间
                     if (  (event.target.scrollTop >= parent.children[i].offsetTop)   &&  (event.target.scrollTop< (parent.children[i].offsetTop + parent.children[i].offsetHeight))  ) {
-                        // 这边要是angular和vue就可以双向数据处理  ngClass 等
                         title.children[i].style.backgroundColor = 'red';
                     }
                 }
             } else {
-                console.log('falg')
                 for ( let i = 0; i < parent.children.length;  i ++ ) {
                     title.children[i].style.backgroundColor = 'lightpink';
                 }
-                console.log(title.children[num])
                 title.children[num].style.backgroundColor = 'red';
             }
         })
 
         function skip(number) {
-
-            console.log(parent.scrollHeight)
-            console.log(parent.children[number].offsetTop)
             // 这边最长的scrollTop也就是662px，但是我的offsetTop有1200px
-            if(parent.children[number].offsetTop > parent.scrollTop) {
-                console.log(parent.scrollTop)
-                parent.scrollTop --;
-                console.log(parent.scrollTop)
-                console.log('jinlai')
-                flag = false; // 说明滚动条已经到底部了
+            if(parent.children[number].offsetTop > (parent.scrollHeight - parent.offsetHeight) ) {   // 说明滚动条已经到底部了
+                parent.scrollTop = parent.scrollHeight - parent.offsetHeight;
+                parent.scrollTop --; // 因为4点完，还有5，一样的scrollerTop，怎么触发滚动事件
+                flag = false;
                 num = number;
-                console.log(num)
             } else {
+                flag = true;
                 parent.scrollTop =  parent.children[number].offsetTop;
             }
-
-            // parent.scrollTop =  parent.children[number].offsetTop + 5;
-            // console.log(parent.scrollTop);
-            // title.children[number].style.backgroundColor = 'red';
         }
     </script>
 

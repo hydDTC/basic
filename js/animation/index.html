@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>translate和margin的区别</title>
     <style>
         #parent{
             width: 220px;
@@ -33,6 +33,10 @@
 
 
         <script>
+            /* translate移动保持原来的位置，所以后面的兄弟不会挤上来  */
+            /* margin（top bottom position）移动不保持原来的位置，所以后面的兄弟会挤上来  */
+
+
             // one.style.transform = `translate(0, ${-370 * 1}px)`
             // img1.style.transform = `translate(0, ${-170 * 1}px)`
             //

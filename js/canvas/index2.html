@@ -2,53 +2,143 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>头像放大缩小后的裁剪</title>
     <style>
         #canvas {
-            /*margin: 100px 300px;*/
+            position: absolute;
+            left:400px;
+            top:200px;
+        }
+        input {
+            position: absolute;
+            left:400px;
+            top:600px;
         }
     </style>
 </head>
 <body>
 
-                    <canvas id="canvas" width="300px" height="300px" style="border:1px solid red"></canvas>
+                    <canvas id="canvas" width="312px" height="312px" style="border:1px solid red"></canvas>
 
-                    <input type="range" min="0.1" max="3.0" step="0.01" value="1" id="range">
+                    <input type="range" min="1" max="2.0" step="0.01" value="1" id="range">
 
                     <div>
-                        <img id="source" src="../assets/img/hyd.jpg">
+                        源头像： <img id="source" src="../assets/img/hyd.jpg" width="300px" height="300px">
                     </div>
 
 
                     <script>
+                        var dLeft = 0;
+                        var dTop = 0;
+                        var dWidth = 312;
+                        var dHeight = 312;
+                        var dTopStatic = 312
+                        var dLeftStatic = 312
+
+
                         var canvas = document.getElementById("canvas");
                         var ctx = canvas.getContext("2d");
 
+                        ctx.fillStyle = "rgba(155,155,155,0.8)";
+                        ctx.fillRect (0, 0, 320, 320);
+
+
                         ctx.beginPath();
-                        ctx.arc(150, 150, 150, 0, 2 * Math.PI);
-                        ctx.stroke();
-                        ctx.clip();  // 裁剪了  就镂空了
+                        ctx.arc(160, 160, 160, 0, 2 * Math.PI);
+                        ctx.fillStyle= 'rgb(2,100,30)';
+                        ctx.fill();
+                        // ctx.clip();  // 裁剪后 接下来的操作就在裁剪区域中进行, 并不是镂空。。。
 
                         var image = document.getElementById('source');
-                        ctx.drawImage( image, 0, 0, 624, 624, 0, 0, 300, 300);
-
+                        // 默认位置从0，0开始的
+                        ctx.drawImage( image, 0, 0, 624, 624, 0, 0, 312, 312);
 
 
                         var range = document.getElementById('range');
                         range.addEventListener("input", rangeValue);
-                        function rangeValue() {
-                            console.log(range.value);
-                            // ctx.scale(range.value, range.value)
-                            let width = image.width =  624 * (range.value)
-                            let height = image.height =  624 * (range.value)
-                            let centerLeft = width / 2  - 150 ;  // 画布的一半
-                            let centerTop = height / 2  - 150 ;  // 画布的一半
-                            if (width > 624 && height > 624) {
-                                ctx.drawImage( image, centerLeft, centerTop, 300, 300 ,0, 0, 300, 300);
-                            }
 
+                        function rangeValue() {
+
+
+                            // 清空画布
+                            ctx.clearRect(0,0,1000,1000);
+                            let enlarge = range.value;
+
+                            // 图片放大 缩小的宽高
+                             dWidth =  312 * enlarge;
+                             dHeight =  312 * enlarge;
+
+
+                            // 不变的唯一值
+                            dTopStatic = -(dWidth - 312) / 2;
+                            dLeftStatic = -(dWidth - 312) / 2;
+
+                            // 放大之后 拽回去 因为他它是从左下角延申的
+                             dTop = -(dWidth - 312) / 2;   // 变量名是top left有问题  看来命名也是要注意的
+                             dLeft = -(dHeight - 312) / 2;
+
+                            ctx.drawImage( image, 0, 0, 624, 624 ,dTop, dLeft, dWidth, dHeight);
                         }
 
+                        var downX = 0;
+                        var downY = 0;
+
+                        var moveX = 0;
+                        var moveY = 0;
+
+
+
+                        var flag = false
+
+
+                        canvas.onmousedown = function(event) {
+                            flag = true;
+                            downX = event.clientX;
+                            downY = event.clientY;
+                            console.log(dTop)
+                        }
+
+                        canvas.onmousemove = function(event) {
+                            if (flag) {
+                                moveX = event.clientX;
+                                moveY = event.clientY;
+                                if (moveX - downX === 0) { // 鼠标刚刚按下去的时候
+
+                                } else {
+
+                                    dTop = dTop + (moveX - downX);
+                                    dLeft = dLeft + (moveY - downY);
+
+                                    // 负的 记得哈
+                                    if (  (dLeft >= 0 && dLeftStatic * 2 >= dLeft)  ) {
+                                        dTop = 0;
+                                        dLeft = dLeftStatic * 2;
+                                    }else if ((dLeft >= 0 && dTopStatic * 2 >= dTop)) {
+                                        dTop = dLeftStatic * 2;
+                                        dLeft = 0;
+                                    }
+                                    else if ( (dTopStatic * 2 >= dTop) || (dLeftStatic * 2 >= dLeft)   ) {
+                                        dTop = dTopStatic * 2
+                                        dLeft = dLeftStatic * 2
+                                    } else if ( dTop >= 0 || dLeft>= 0) {
+                                        dTop = 0
+                                        dLeft = 0
+                                    }else {
+                                        ctx.clearRect(0,0,1000,1000);
+                                        ctx.drawImage( image, 0, 0, 624, 624 ,dTop , dLeft , dWidth, dHeight);
+
+                                    }
+
+                                }
+
+
+                            }
+                        }
+
+                        canvas.onmouseup = function(event) {
+                            flag = false;
+
+                        }
                     </script>
 
 </body>
