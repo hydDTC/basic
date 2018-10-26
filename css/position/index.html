@@ -2,94 +2,123 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title></title>
+    <title> fixed问题，滚动条滚动的时候不随之滚动，换用absolute </title>
     <style>
       *{
             padding:0;
             margin:0;
         }
        html, body {
-         height:100%;
+           height:100%;
+           font-size: 40px;
        }
        #parent {
            width:100%;
            height: 100%;
            position: relative;
-           background: red;
-           overflow:auto;
+           background: lightpink;
+       }
+       .header {
+           position: fixed;
+           left:0;
+           top:0;
+           width:100%;
+           height:100px;
+           background-color: red;
+           z-index: 10;
        }
        #content {
-           width:100%;
-           height: 4000px;
-           position: relative;
-           background: yellow;
+           position: absolute;
+           left:0;
+           right:0;
+           top:0;
+           bottom:0;
+           margin: 100px 0 68px 0;
+           /*  可以试试去掉这个 但是一般背景填充一下  在谁身上滚动 */
            overflow:auto;
            opacity:0.6;
        }
-       #login{
-           position:absolute;
-           /*top: 200px;*/
-           width:100%;
-           height:68px;
-           background-color: purple;
-       }
-       /* #footer{
-           position:absolute;
+      .inner-content {
+          width:120%;
+          height: 4000px;
+          position: absolute;
+          left:0;
+          right:0;
+          top:0;
+          bottom:0;
+          border: 1px solid black;
+      }
+       .footer{
+           position:fixed;
            width:100%;
            height:68px;
            background-color: red;
-       } */
-       @media screen and (max-width: 1350px) {
-           #content, #login{
-               min-width: 1366px;
-           }
-        }
+           left:0;
+           bottom:0;
+       }
+
+       /* 滚动条  */
+      ::-webkit-scrollbar {
+          width: 10px;
+          height: 10px;
+      }
+
+      ::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+          background-color: #e2e2e2;
+      }
+
+      ::-webkit-scrollbar-thumb {
+          border-radius: 0;
+          background-color: rgba(0, 0, 0, .2);
+      }
+
+      ::-webkit-scrollbar-corner, ::-webkit-scrollbar-track {
+          background-color: #e2e2e2;
+      }
+
+      ::-webkit-scrollbar-track-piece {
+          background-color: inherit; // #F5F5F5
+      }
+
+       /*@media screen and (max-width: 1350px) {*/
+           /*#content, #login{*/
+               /*min-width: 1366px;*/
+           /*}*/
+        /*}*/
        
     </style>
 </head>
 <body>
-    <div>lalallalalalla</div>
      <div id="parent">
-         <div id="content"></div>
-         <div id="login" style="bottom: 0"></div>
-         <!-- <div id="footer"></div> -->
+         <!--拉滚动条的时候，fixed定位的不会随之滚动  fixed是根据body(浏览器窗口)定位的 这就有问题啦-->
+         <header class="header" id="header">header</header>
+         <div id="content">content
+             <div class="inner-content"></div>
+         </div>
+         <footer class="footer" id="footer">footer</footer>
      </div>
 </body>
 
 
     <script>
+
      var parent = document.getElementById('parent');
      var login = document.getElementById('login');
 
-     parent.addEventListener('scroll', function(event){
-
-
-         login.style.bottom = -event.target.scrollTop + 'px';
-
-
-         // document.body.offsetHeight
-
-
-        //  console.log('scrollTop')
-        //  console.log(event.target.scrollTop)
-        //
-        //  console.log('offsetHeight')
-        //  console.log( document.body.offsetHeight)
-        //
-        // //  console.log('cliebtHeight')
-        // //  console.log(  document.body.clientHeight)
-        //
-        //  console.log('scrollHeight')
-        //  console.log( event.target.scrollHeight)
-        //  if ( (event.target.scrollTop + document.body.offsetHeight) <= event.target.scrollHeight) {
-        //      console.log('dibu')
-        //      console.log('%%%%%%%%%%%%%%%%%%%%%%%%')
-        //      console.log(event.target.scrollTop )
-        //      console.log(document.body.offsetHeight)
-        //     login.style.top = (event.target.scrollTop + document.body.offsetHeight - 168) + 'px';
-        //  }
-
-     })
+     // parent.addEventListener('scroll', function(event){
+     //
+     //
+     //     login.style.bottom = -event.target.scrollTop + 'px';
+     //
+     //    //  if ( (event.target.scrollTop + document.body.offsetHeight) <= event.target.scrollHeight) {
+     //    //      console.log('dibu')
+     //    //      console.log('%%%%%%%%%%%%%%%%%%%%%%%%')
+     //    //      console.log(event.target.scrollTop )
+     //    //      console.log(document.body.offsetHeight)
+     //    //     login.style.top = (event.target.scrollTop + document.body.offsetHeight - 168) + 'px';
+     //    //  }
+     //
+     // })
 
     
     

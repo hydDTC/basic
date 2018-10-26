@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>关于position(left right top bottom都为0填充整个屏幕和  width=100% height=100%;的区别)</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        html, body {
+            height:100%;
+        }
+        .parent{
+            position: relative;
+            width:100%;
+            height:100%;
+            background-color:  lightgray;
+        }
+        /*.child{*/
+            /*position: absolute;*/
+            /*left:0;*/
+            /*right:0;*/
+            /*top:0;*/
+            /*bottom:0;*/
+            /*border: 5px solid red;*/
+            /*margin: 100px;*/
+        /*}*/
+        .child{
+            width:100%;
+            height:100%;
+            border: 5px solid red;
+            margin: 100px;
+        }
+
+    </style>
+</head>
+<body>
+
+        <div class="parent">
+            <div class="child"></div>
+        </div>
+
+</body>
+</html>
