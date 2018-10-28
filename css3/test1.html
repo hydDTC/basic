@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transition</title>
+    <style>
+        .one{
+            color:white;
+            text-align:center;
+            line-height:100px;
+            width:100px;
+            height:100px;
+            border-radius: 10px;
+            background-color:rgb(146,185,1);
+            transition-property: transform,opacity;
+            transition-duration: 2s,2s;
+        }
+        .one:hover{
+            transform:rotate(45deg) translate(500px,0);
+            opacity:0.5;
+        }
+    </style>
+</head>
+<body>
+<!--要手动书法 hover  focus等-->
+    <div class="one">
+        css3动画
+    </div>
+
+</body>
+</html>

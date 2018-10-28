@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>transform</title>
+    <style>
+        /**{*/
+            /*margin:0;*/
+            /*padding:0;*/
+        /*}*/
+        #one {
+            width:100px;
+            height:100px;
+            background-color:red;
+            /*margin-left:20px;*/
+            /*margin-bottom:10px;*/
+            transform:translate(20px,10px);         /* W3C标准 */
+            -ms-transform:translate(20px,10px);     /* IE 9 */
+            -moz-transform:translate(20px,10px);    /* Firefox */
+            -webkit-transform:translate(20px,10px); /* Safari 和 Chrome */
+            -o-transform:translate(20px,10px);      /* Opera */
+            /*transform-origin:left top;*/
+            transform-origin:right bottom;
+        }
+        #two {
+            width:100px;
+            height:100px;
+            background-color:blue;
+            transform:rotate(45deg);
+            transform-origin:right bottom;
+        }
+        #three {
+            width:100px;
+            height:100px;
+            background-color:yellow;
+            transform:scale(2,2);
+        }
+        #four {
+            width:100px;
+            height:100px;
+            background-color:black;
+            transform:skew(30deg,45deg);
+            /*transform:skew(45deg,45deg);*/
+        }
+    </style>
+</head>
+<body>
+<div id="one"></div>
+<div id="two"></div>
+<div id="three"></div>
+<div id="four"></div>
+</body>
+</html>

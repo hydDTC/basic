@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+<input type="text" id="input">
+<button id="send">点我</button>
+
+<script>
+    var input = document.getElementById('input')
+    var send = document.getElementById('send')
+
+    // b发出来了，我接收
+    window.addEventListener('storage', function (e) {
+        console.info(e)
+        // 我收到b给我的信息 e中有type，意思是可以区分多个哦
+    });
+    // send.addEventListener('click', function () {
+    //     localStorage.setItem(`${Date.now()}`, input.value)
+    // })
+</script>
+
+</body>
+</html>

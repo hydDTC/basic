@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <style type="text/css">
+        body {
+            border:20px solid yellow;
+            margin:20px;
+            padding:40px;
+            background:#d1d1d1;
+        }
+        #parent {
+            width:400px;
+            height:200px;
+            padding:20px;
+            background:yellow;
+            border:5px solid red;
+            position:relative;
+        }
+        #test {
+            width:100px;
+            height:100px;
+            padding:20px;
+            background:blue;
+            border:5px solid red;
+        }
+    </style>
+</head>
+<body>
+<div id="parent">
+    <div id="test"></div>
+</div>
+
+<script>
+// offsetLeft 到有定位的内边框的距离  不包括parent的border
+// 没有定位父级，到html
+    var test = document.getElementById("test");
+    test.innerHTML =
+        "<p>offsetLeft:"+test.offsetLeft+"</p>"+
+        "<p>offsetTop:"+test.offsetTop+"</p>";
+</script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        async function f3() {
+            try {
+                await Promise.reject('出错了');
+            }catch(e){
+                console.log(e)
+            }
+            // return 一定要加
+            return await Promise.resolve('hello world'); // 不会执行
+        }
+        f3().then( v => console.log(v)).catch(
+            e => console.log(e))
+
+
+//        async function f1() {
+//            await Promise.reject('出错了')
+//                .catch(e => console.log(e));
+//            return await Promise.resolve('hello world');
+//        }
+//
+//        f1()
+//            .then(v => console.log(v))
+
+        // 多个await放在try中
+        async function f2(){
+            try{
+                  await Promise.reject('出错了');
+                await Promise.reject('number2');
+                await Promise.reject('number3');
+
+            }catch(e){
+                console.log(e)
+            }
+            return await Promise.resolve('hello world')
+        }
+        f2().then( v => console.log(v)).catch(
+            e => console.log(e))
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>图片自动上下来回滚动，并且可以点击选择</title>
+    <style>
+        #parent{
+            width: 220px;
+            height:370px;
+            border: 1px solid black;
+            /*overflow: hidden;*/
+        }
+        #one {
+            width: 220px;
+            height:1110px;
+            border: 1px solid red;
+            transition: all 1.5s;
+            /*overflow: hidden;*/
+        }
+        img {
+
+        }
+        button {
+            float: right;
+        }
+    </style>
+</head>
+<body>
+
+<div id="parent">
+    <!--内层嵌套-->
+            <div id="one">
+                <img src="../assets/img/img1-1.jpg" width="220" height="370" id="xx">
+
+                <img src="../assets/img/img1-2.jpg" width="220" height="370">
+
+                <img src="../assets/img/img2-1.jpg" width="220" height="370">
+            </div>
+</div>
+
+            <!--<button onclick="prev()" id="prev">上一张</button>-->
+            <!--<button onclick="next()" id="next">下一张</button>-->
+            <button  id="prev">上一张</button>
+            <button  id="next">下一张</button>
+
+            <script>
+                    var one = document.getElementById('one');
+                    var prev = document.getElementById('prev');
+                    var next = document.getElementById('next');
+                    var children = one.children;
+                    var par_index = true;
+                    var i = 0;  // 全局变量
+
+
+
+                    // translate 是到达一个位置
+                    function next () {
+
+                        if (i < children.length - 1) {
+                            i++;
+                            one.style.transform = `translate(0, ${-370 * i}px)`
+                        }
+                    }
+
+
+                    function prev () {
+                        console.log('lalala')
+
+                        if (i > 0) {
+                            i--;
+                            one.style.transform = `translate(0, ${-370 * i}px)`
+                        }
+                    }
+
+
+                    var time = setInterval( test, 1500 )
+
+                    function test() {
+
+
+                        if (par_index) {    // 单独变量控制自动运转
+                            if(i < children.length - 1) {
+                                i++;
+                                one.style.transform = `translate(0, ${-370 * i}px)`
+                            } else {
+                                par_index = !par_index
+                            }
+                        }
+
+                        if (!par_index) {
+                            if (i > 0) {
+                                i--;
+                                one.style.transform = `translate(0, ${-370 * i}px)`
+                            } else {
+                                par_index = !par_index
+                            }
+                        }
+
+
+
+                    }
+
+
+
+                    prev.addEventListener("mouseenter",function() {
+                        clearInterval(time)
+                    });
+
+                    prev.addEventListener("mouseleave",function() {
+                        time = setInterval( test, 1500 )
+                    });
+
+                    prev.addEventListener("click",function() {
+                       // 这边直接调用prev方法有问题
+
+                        if (i > 0) {
+                            i--;
+                            one.style.transform = `translate(0, ${-370 * i}px)`
+                        }
+                    });
+
+                    next.addEventListener("mouseenter",function() {
+                        clearInterval(time)
+                    });
+
+                    next.addEventListener("mouseleave",function() {
+                        time = setInterval( test, 1500 )
+                    });
+
+                    next.addEventListener("click",function() {
+
+                        if (i < children.length - 1) {
+                            i++;
+                            one.style.transform = `translate(0, ${-370 * i}px)`
+                        }
+                    });
+
+
+
+
+            </script>
+</body>
+</html>

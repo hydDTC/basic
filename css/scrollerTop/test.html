@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>随着滚动条滚动的Tab切换</title>
+    <style>
+        html {
+            height: 100%;
+            max-height: 100%;
+            overflow: scroll;
+        }
+        *{
+            list-style:none;
+            margin:0;
+            padding:0;
+            text-decoration:none;
+            font-family:'Microsoft YaHei';
+
+        }
+        .nav{
+            width:100px;
+            background:red;
+            position: fixed;
+            top: 50px;
+            left: 50px;
+        }
+        .nav .cur{
+            background:#fff;
+            border-top:2px solid #1a92cf;
+            color:#1a92cf;
+        }
+        li{
+            width:100px;
+            height:50px;
+            line-height:50px;
+            border-right:2px solid #eee;
+            text-align:center;
+            cursor:pointer;
+        }
+        ul{
+            width:100px;
+            margin:0 auto;
+        }
+        a{
+            color:#505050;
+        }
+        #text {
+            margin-left: 200px;
+        }
+    </style>
+</head>
+<body>
+<br/><br/><br/><br/><br/><br/><br/>
+<div class="nav" id="nav-container">
+    <ul id="nav-box">`
+        <li class="cur">text1-nav</li>
+        <li>text2-nav</li>
+        <li>text3-nav</li>
+    </ul>
+</div>
+
+<div id="text">
+    <div style="width:80%;height:500px;background:green;text-align:center;">text1</div>
+    <div style="width:80%;height:500px;background:yellow;text-align:center;">text2</div>
+    <div style="width:80%;height:500px;background:blue;text-align:center;">text3</div>
+</div>
+<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+
+<script>
+    var navContainer = document.getElementById("nav-container");
+    var navBox = document.getElementById("nav-box");
+    var text = document.getElementById("text");
+    var navBoxChild = navBox.children;  // li
+    var textChild = text.children;  //div
+    var num = navContainer.offsetTop;  // 定位父亲的距离
+    var a = navContainer.offsetHeight;  // 自身的宽高
+    console.log(document.documentElement.scrollHeight)
+    // console.log(document.documentElement.clientHeight)
+    window.onscroll = function(){
+        console.log(document.documentElement.scrollHeight)
+        // console.log(document.documentElement.clientHeight)
+        var scrollTop = document.documentElement.scrollTop || window.pageYOffset || document.body.scrollTop;
+        if(scrollTop >= num){
+            navContainer.className = "nav fixed";
+            text.style.paddingTop = a +"px";
+        }else{
+            navContainer.className = "nav";
+            text.style.paddingTop = "";
+        }
+        //当导航与相应文档接触的时候自动切换
+        //method1
+        for(var i=0;i<navBoxChild.length;i++){
+            if( scrollTop + a >= textChild[i].offsetTop){  // 临界点
+                for(var j=0;j<navBoxChild.length;j++){
+                    navBoxChild[j].className = "";
+                }
+                navBoxChild[i].className = "cur";
+            }
+        }
+    };
+</script>
+</body>
+</html>

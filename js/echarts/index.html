@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../assets/echarts.min.js"></script>
+    <style>
+        #one {
+            /*width:500px;*/
+            width:80%;
+            height:500px;
+        }
+    </style>
+</head>
+<body>
+
+<div>
+    <div id="one"></div>
+</div>
+
+
+<script>
+       var one = document.getElementById('one')
+       var myChart = echarts.init(one);
+       option = {
+           xAxis: {
+               type: 'category',
+               data: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun']
+           },
+           yAxis: {
+               type: 'value'
+           },
+           series: [{
+               data: [820, 932, 901, 934, 1290, 1330, 1320],
+               type: 'line'
+           }]
+       };
+       myChart.setOption(option);
+
+</script>
+
+</body>
+</html>

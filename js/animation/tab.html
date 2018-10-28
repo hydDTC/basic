@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>页面滚动的时候自动切换导航栏</title>
+    <style>
+        * {
+            margin:0;
+            padding: 0;
+        }
+        ul {
+            position:fixed;
+            left:0;
+            top: 0;
+        }
+        ul > li {
+            border: 1px solid black;
+            margin-left: 10px;
+            display: inline-block;
+            background-color: lightpink;
+            text-align: center;
+            width:100px;
+        }
+        .parent {
+            position: absolute;
+            left:0;
+            right: 0;
+            top: 0 ;
+            bottom: 0;
+            margin-top: 100px;
+            overflow: auto;
+            transition: all 1s;
+        }
+        .parent > div {
+            width:100%;
+            height: 300px;
+        }
+        .one {
+            background-color: red;
+        }
+        .two {
+            background-color: orange;
+        }
+        .three {
+            background-color: yellow;
+        }
+        .four {
+            background-color: green;
+        }
+        .five {
+            background-color: blue;
+        }
+    </style>
+</head>
+<body>
+
+
+    <ul id="title">
+        <li onclick="skip(0)">tab1</li>
+        <li onclick="skip(1)">tab2</li>
+        <li onclick="skip(2)">tab3</li>
+        <li onclick="skip(3)">tab4</li>
+        <li onclick="skip(4)">tab5</li>
+    </ul>
+
+
+    <div class="parent" id="parent">
+        <div class="one"></div>
+        <div class="two"></div>
+        <div class="three"></div>
+        <div class="four"></div>
+        <div class="five"></div>
+    </div>
+
+    <script>
+        /* 公式： parent.scrollerTop = parent.scrollHeight - parent.offsetHeight : 说明到达底部*/
+
+        var parent = document.getElementById('parent');
+        var title = document.getElementById('title');
+        var flag = true; // 控制是否超过了scrollerTop总值
+        var num = 0;  // 当滚动条滚动的scrollerTop < 标签的offsetTop  全局tab
+        parent.scrollTop = 5;  // 初始值默认第一个tab被选中
+        /* offsetTop是距离最近的position的距离  */
+        parent.addEventListener('scroll', function(event) {
+            if (flag) {
+                for ( let i = 0; i < parent.children.length;  i ++ ) {
+                    title.children[i].style.backgroundColor = 'lightpink';
+                    // 当滚动的距离 在这个标签的 offsetTop和高度之间
+                    if (  (event.target.scrollTop >= parent.children[i].offsetTop)   &&  (event.target.scrollTop< (parent.children[i].offsetTop + parent.children[i].offsetHeight))  ) {
+                        title.children[i].style.backgroundColor = 'red';
+                    }
+                }
+            } else {
+                for ( let i = 0; i < parent.children.length;  i ++ ) {
+                    title.children[i].style.backgroundColor = 'lightpink';
+                }
+                title.children[num].style.backgroundColor = 'red';
+            }
+        })
+
+        function skip(number) {
+            // 这边最长的scrollTop也就是662px，但是我的offsetTop有1200px
+            if(parent.children[number].offsetTop > (parent.scrollHeight - parent.offsetHeight) ) {   // 说明滚动条已经到底部了
+                parent.scrollTop = parent.scrollHeight - parent.offsetHeight;
+                parent.scrollTop --; // 因为4点完，还有5，一样的scrollerTop，怎么触发滚动事件
+                flag = false;
+                num = number;
+            } else {
+                flag = true;
+                parent.scrollTop =  parent.children[number].offsetTop;
+            }
+        }
+    </script>
+
+</body>
+</html>

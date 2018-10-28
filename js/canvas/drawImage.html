@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>画布裁剪头像的应用</title>
+    <style>
+        #canvas {
+            position: absolute;
+            left:400px;
+            top:200px;
+        }
+    </style>
+</head>
+<body>
+
+                    <canvas id="canvas" width="300px" height="300px" style="border:1px solid red"></canvas>
+
+                    <div>
+                        <!--图片参照-->
+                        图片参照:<img id="source" src="../assets/img/hyd.jpg" width="300" height="300">
+                    </div>
+
+                    <script>
+                        var canvas = document.getElementById("canvas");
+                        var ctx = canvas.getContext("2d");
+
+                        ctx.beginPath();
+                        ctx.arc(150, 150, 150, 0, 2 * Math.PI);
+                        ctx.stroke();
+                        ctx.clip();  // 裁剪了  就镂空了  否则会被后面的给覆盖哦
+
+                        var image = document.getElementById('source');
+                        console.dir(image)
+                        //  发现这边就算设置了图片的宽高，原图的裁剪还是根据图片原来的尺寸，624*624  奇怪
+                        ctx.drawImage( image, 0, 0, 600, 600,0,0,300,300);
+                        // ctx.drawImage( image, 200, 200, 200, 200,0, 0, 300, 300);
+                        /*      */
+                        // ctx.drawImage( image, sx, sy, swidth, sheight, dx, dy, dwidth, dheight);
+                        // sx, sy, swidth, sheight :从原来的图像何处开始裁剪，裁剪多少，然后形成一个矩形
+                        // dx, dy, dwidth, dheight :基于裁剪的原图进行放大，缩小，并放到容器的某个位置(如果原来的图没有裁剪，就是根据整个原图进行放大缩小)
+                        //按照图片的原尺寸裁剪
+
+
+
+                    </script>
+
+</body>
+</html>

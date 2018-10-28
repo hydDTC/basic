@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>...</title>
+</head>
+<body>
+<script>
+    var xx = [1,2,3];
+    function test(a,b){
+        return a+b;
+    }
+    var result = xx.reduce(test,0)
+    console.log(result)
+
+// 扩展运算符  代替apply
+    var arr = [1,2,2];
+    console.log(...arr);
+    function firstOne(a,b,c){
+        console.log(a,b,c)
+    }
+    firstOne(...arr)
+
+
+    // 字符串 变成数组
+    var str = 'hello';
+    console.log([...str])
+</script>
+</body>
+</html>

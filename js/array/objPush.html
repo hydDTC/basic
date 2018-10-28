@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <script>
+        // 可遍历的对象  iterable
+        // 类似数组的对象
+         const obj = {
+             '4': 'hyd',
+             '5': 'cdz',
+//             length: 2,
+             'push':Array.prototype.push
+         }
+         obj.push('dd');
+         obj.push('ff');
+         console.log(obj);
+         console.log(obj.length)
+         console.log ( Array.from(obj) )
+//         const set = new Set(obj);
+//         console.log(...set)
+
+
+        var xx = {
+             '0':'hyd',
+             '1':'cdz',
+             '5':'ccc',
+            'length':3
+        }
+        // 对于类似数组对象无效
+        // 对于那些没有部署 Iterator 接口的类似数组的对象，扩展运算符就无法将其转为真正的数组
+       // console.log(...xx)
+        // 按顺序的
+        console.log(Array.from(xx))
+    </script>
+</body>
+</html>
