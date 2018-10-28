@@ -4,72 +4,90 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <style>
-        body {
+        html, body {
+           height: 100%;
             overflow: hidden;
         }
-        #parent{
-            /* 使这个层充满整个屏幕*/
+        /*#parent{*/
+            /*!* 使这个层充满整个屏幕*!*/
+            /*position: absolute;*/
+            /*left:0;*/
+            /*right:0;*/
+            /*top:0;*/
+            /*bottom:0;*/
+           /*border: 5px solid black;*/
+        /*}*/
+        .child {
             position: absolute;
             left:0;
             right:0;
             top:0;
             bottom:0;
             background-color: pink;
-        }
-        #child {
-            width:100%;
-            height:100%;
-            background: #1a92cf;
             overflow: auto;
-            position: relative;
         }
-        #child0 {
-            width:50%;
-            height:1500px;
-            background: lightgoldenrodyellow;
-            opacity: 0.6;
-        }
-        #footer {
-            position:absolute;
-            transition: all 1s;
-            bottom: 0px;
-            height:20px;
+        .header {
             width:100%;
-            background-color: red;
-            transform: translate(0, 20px);
+            position: absolute;
+            height:60px;
+            background: white;
+            left:0;
         }
+        .content {
+            width: 100%;
+            height: 3000px;
+            border: 5px solid red;
+        }
+        .footer {
+            width:100%;
+            position: absolute;
+            height:60px;
+            background: white;
+            left:0;
+            bottom: 0;
+        }
+        .tip {
+            width:100%;
+            position: absolute;
+            height:60px;
+            background: blue;
+            left:0;
+        }
+
+
     </style>
 </head>
 <body>
-                <div id="parent">
-                    <div id="child">
-                        <div id="child0">
-                                hahahhaha
-                        </div>
-
-                        <div id="footer">
-                            hahahha
-                        </div>
+                <!--<div id="parent">-->
+                    <div id="child" class="child">
+                        <header class="header" id="header">header</header>
+                        <div class="content">content</div>
+                        <footer class="footer" id="footer">footer</footer>
+                        <div class="tip" id="tip">当滚动条到最底部的时候出现</div>
                     </div>
-
-
-
-                </div>
+                <!--</div>-->
 
 
                 <script>
 
-                    var child = document.getElementById('child');
+                    var header = document.getElementById('header');
                     var footer = document.getElementById('footer');
-                    child.addEventListener('scroll', function(event) {
-                        console.log('lalalla');
-                        console.log(event.target.scrollHeight)
-                        console.log(event.target.scrollTop)
-                        if (event.target.scrollTop > 500) {
-                            console.log('kakkaka')
-                            footer.style.transform = 'translate(0, 0px)'
-                        }
+                    var child = document.getElementById('child');
+                    var tip = document.getElementById('tip');
+                    console.log (child.scrollHeight)
+                    /*  滚动条长度  = 滚动的距离 + body.clientHeight(offsetHeight ) 代表滚到底部*/
+                    tip.style.bottom =  - (child.scrollHeight - document.body.offsetHeight) + 'px';
 
+                    child.addEventListener('scroll', function(event) {
+                        header.style.top = event.target.scrollTop + 'px';
+                        footer.style.bottom =  - event.target.scrollTop + 'px';
+
+                        if (child.scrollHeight - event.target.scrollTop <= document.body.offsetHeight + tip.offsetHeight) {
+                            // 你就把footer固定再哪里就好了
+                            footer.style.bottom =  - event.target.scrollTop + tip.offsetHeight + 'px';
+                        } else {
+                            footer.style.bottom =  - event.target.scrollTop + 'px';
+                        }
                     })
 
 
