@@ -12,131 +12,58 @@
 <body>
 <script>
 
-        var unitStr = 'yuan'
-        var dataChar=document.getElementById("dataEchart");
-        var reportChart=echarts.init(dataChar);
-        reportChart.setOption({
-            tooltip : {
-                trigger: 'axis'
-            },
-            legend: {
-                x:"4%",
-                data:['昨天','今天']
-            },
-            toolbox: {
-                show : true,
-                feature : {
-                    mark : {show: true},
-                    dataView : {show: true, readOnly: false},
-                    magicType : {show: true, type: ['line', 'bar', 'stack', 'tiled']},
-                    restore : {show: true},
-                    saveAsImage : {show: true}
-                }
-            },
-            grid: {
-                left: '4%',
-                right: '4%',
-                bottom: '3%',
-                top:"18%",
-                containLabel: true,
-                backgroundColor:"blue"
-            },
-            calculable : true,
-            xAxis : [
-                {
-                    type : 'category',
-                    boundaryGap : false,
-                    data:[0,0,0,0,0,0],
-                    axisLine:{
-                        lineStyle:{
-                            color: '#bfc4cd'
-                        }
-                    },
-                    splitLine:{
-                        show:true,
-                        lineStyle:{
-                            color: ['#f8f8f8'],
-                            width: 1,
-                            type: 'solid'
-                        }
-                    },
-                    splitArea:{
-                        /*show:true
-                         areaStyle:{
-                         color: [
-                         'rgba(249,249,249,0.1)',
-                         'rgba(249,249,249,0.1)'
-                         ]
-                         }*/
-                    }
-                }
-            ],
-            yAxis : [
-                {
-                    type : 'value',
-                    min: 0,
-                    axisLine:{
-                        lineStyle:{
-                            color: '#bfc4cd'
-                        }
-                    },
-                    axisLabel : {
-                        formatter: '{value}'+unitStr
-                    },
-                    splitLine:{
-                        show:true,
-                        lineStyle:{
-                            color: ['#f8f8f8'],
-                            width: 1,
-                            type: 'solid'
-                        }
-                    },
-                    splitArea:{
-                        /*show:true
-                         areaStyle:{
-                         color: [
-                         'rgba(249,249,249,0.1)',
-                         'rgba(249,249,249,0.1)'
-                         ]
-                         }*/
-                    }
-                }
-            ],
-            series : [
-                {
-                    name:'昨天',
-                    type:'line',
-                    smooth:true,
-                    itemStyle:{
-                        normal:{
-                            color: "#30beba" //图标颜色
-                        }
-                    },
-                    lineStyle:{
-                        normal:{
-                            color: "#30beba"  //连线颜色
-                        }
-                    },
-                    data:[0,0,0,0,0,0]
-                },
-                {
-                    name:'今天',
-                    type:'line',
-                    smooth:true,
-                    itemStyle:{
-                        normal:{
-                            color: "#ec79ad" //图标颜色
-                        }
-                    },
-                    lineStyle:{
-                        normal:{
-                            color: "#ec79ad"  //连线颜色
-                        }
-                    },
-                    data:[0,0,0,0,0,0]
-                }
-            ]
-        });
+    // 把一个对象里面的东西
+       var xx = {
+           age: [ {value: "1", name: "<18", desc: "<18", entrySequence: 2},
+                  {value: "2", name: "18-24", desc: "18-24", entrySequence: 3},
+                   ,{value: "3", name: "25-29", desc: "25-29", entrySequence: 4}
+                   ,{value: "4", name: "30-34", desc: "30-34", entrySequence: 5}
+                    ,{value: "5", name: "35-39", desc: "35-39", entrySequence: 6}
+                    ,{value: "6", name: "40-44", desc: "40-44", entrySequence: 7}
+                   ,{value: "7", name: "45-49", desc: "45-49", entrySequence: 8}
+                   ,{value: "8", name: "50+", desc: "50+", entrySequence: 9}
+                   ,{value: "0", name: "未知", desc: "未知", entrySequence: 100}],
+           name: [1,2,3],
+           sex: [1,2,3],
+       }
+       let {age,name,sex} = xx;
+       console.log(age)
+
+       let  yy =  {age,name,sex}
+       console.log(yy)
+
+
+     console.log(Object.entries(yy))
+
+    // Object.entries(yy).map( ([key, value]) => {
+    //       console.log(key)
+    //         console.log(value)
+    // })
+
+    var arr =[   [12, [1,2,3] ],  [12, [1,2,3] ],  [12, [1,2,3] ] ]
+    // arr.map( item => {
+    //     console.log(item)
+    // })
+
+    let ff =arr.map(  ([key, value])  => {
+       console.log(key,value)
+    })
+
+
+    var xx = [ [1,2], [2,4],[3,5] ]
+    let v = xx.map( ([key2,value2]) => {
+     return {key2,value2}
+    })
+    console.log(v)
+    console.log(v[0])
+
+    // let [key , value] = [1,2]
+    // console.log(key)
+    // console.log(value)
+
+
+
+
 
 
 
