@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>数组</title>
+</head>
+<body>
+<script>
+
+           console.log(Array.of('name','age'))
+
+           var yy = []
+           console.log( yy.copyWithin.call({length: 5, 3: 1}, 0, 3) )
+
+           var xx = [1, 5, 10, 15]
+          console.log ( xx.find(function(value, index, arr) {
+             return value > 90;
+          }) )
+
+           console.log ( xx.findIndex(function(value, index, arr) {
+             return value > 9;
+          }) )
+
+           var xx1 =  ['a', 'b', 'c'] // 改变原来的数组
+           console.log (xx1.fill(7, 1, 2))
+           console.log (xx1)
+
+
+            var yy1 = ['name', 'age', 'length']
+            console.log(Object.entries(yy1))
+            console.log(Object.values(yy1))
+
+           console.log(yy1.includes('name',-3))
+           console.log([ [] ].includes([]))
+           console.log([ {} ].includes({}))
+           console.log([ undefined ].includes(undefined))
+           console.log([NaN].includes(NaN))
+
+           var hh =  [1, 2, [3, [4, 5]]]
+           console.log(hh.flat(Infinity))
+           console.log(hh)  // 不改变原数组
+
+
+           // undefined null  也是值  当作普通值对待
+           // var uu = [null,'a']
+           var uu = [,'a']  // 针对这种情况 join toString 会做处理 map会留位置
+           console.log( uu.some(x => x !== 'a')) // false
+
+           console.log( uu.map(x => 1)) // 占
+           console.log( uu.filter(x => 1)) // 不
+
+           var  tt= [,'a',undefined,null]
+
+           // join方法
+          console.log( tt.join('#')) // "#a##"
+
+           console.log( [...[,'a'].values()]  )
+
+          console.log(...['name','age','sex'])
+          let cc1 =[ ...['name','age','sex']]
+          let cc ={ ...['name','age','sex']}
+          console.log(cc)
+
+           let rr = {a: 3, b: 4}
+           console.log( {...rr})
+           // console.log( [...rr]) // wrong
+
+
+           // 对象的解构与数组有一个重要的不同。数组的元素是按次序排列的，变量的取值由它的位置决定；而对象的属性没有次序，变量必须与属性同名，才能取到正确的值。
+           let [a, b, c] = [1, 2, 3];
+           console.log(a)
+           let { foo, bar } = { foo: "aaa", bar: "bbb" };
+           console.log(foo)
+           const [a1, b1, c1] = 'hello';
+           console.log(a1)
+
+
+           console.log( {...{'name': 'hyd', 'age':20}} )
+           // console.log( ...{'name': 'hyd', 'age':20} )  //wrong
+           // 解构赋值必须是最后一个参数，否则会报错。
+           // 解构赋值的拷贝是浅拷贝，即如果一个键的值是复合类型的值（数组、对象、函数）、那么解构赋值拷贝的是这个值的引用，而不是这个值的副本。
+
+           let ii = { x: 1, y: 2, a: 3, b: 4 }
+           let { x, y, ...z } = ii;  // {a: 3, b: 4}
+           console.log(z)
+           // z.a = '7';
+           // console.log(z)
+           // console.log(ii.a)
+           ii.a = 'j'
+           console.log(z)
+
+
+
+          let aa = {'name': 'jj'}
+          let bb = {'age': 12}
+          let cck = {...aa, ...bb}
+          console.log(cck)
+          aa.name = 'cdz'   // 深拷贝哎  不会相互影响
+          console.log(cck)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

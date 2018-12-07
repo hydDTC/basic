@@ -4,62 +4,85 @@
     <meta charset="UTF-8">
     <title>Title</title>
     <!--<script src="echarts/echarts.min.js"></script>-->
-
-    <script src="echart/echarts.min.js"></script>
 </head>
 
 <div id="dataEchart" style="width:200px; height:200px"></div>
 <body>
 <script>
+    const state = {
+        list:[],
+        statues: {
+            loadStatus: 0,
+            scrollTop: 0
+        },
+        query:{
+            page_index:1,
+            page_size: 10,
+            search_text: '',
+            sort_expression: '',
+            show_state:'',
+            current_state:'',
+            begin_date: '',
+            end_date:''
+        },
+        creative_list:{
+            creative: []
+        }
+    };
+    //
+    // function assignDefaultData(target) {
+    //     Object.keys(target).forEach(sk => {
+    //         if(!target.hasOwnProperty(sk)) return;
+    //         if(target[sk] instanceof Array){
+    //             target[sk].length = 0;
+    //         }else{
+    //             if (typeof target[sk] === 'object') {
+    //                 assignDefaultData(target[sk]);
+    //             }else{
+    //                 target[sk] = null;
+    //             }
+    //         }
+    // });
+    // }
+    //
+    //
+    // assignDefaultData(state)
 
-    // 把一个对象里面的东西
-       var xx = {
-           age: [ {value: "1", name: "<18", desc: "<18", entrySequence: 2},
-                  {value: "2", name: "18-24", desc: "18-24", entrySequence: 3},
-                   ,{value: "3", name: "25-29", desc: "25-29", entrySequence: 4}
-                   ,{value: "4", name: "30-34", desc: "30-34", entrySequence: 5}
-                    ,{value: "5", name: "35-39", desc: "35-39", entrySequence: 6}
-                    ,{value: "6", name: "40-44", desc: "40-44", entrySequence: 7}
-                   ,{value: "7", name: "45-49", desc: "45-49", entrySequence: 8}
-                   ,{value: "8", name: "50+", desc: "50+", entrySequence: 9}
-                   ,{value: "0", name: "未知", desc: "未知", entrySequence: 100}],
-           name: [1,2,3],
-           sex: [1,2,3],
-       }
-       let {age,name,sex} = xx;
-       console.log(age)
-
-       let  yy =  {age,name,sex}
-       console.log(yy)
 
 
-     console.log(Object.entries(yy))
+    console.log( Object.entries(state))
 
-    // Object.entries(yy).map( ([key, value]) => {
-    //       console.log(key)
-    //         console.log(value)
-    // })
 
-    var arr =[   [12, [1,2,3] ],  [12, [1,2,3] ],  [12, [1,2,3] ] ]
-    // arr.map( item => {
-    //     console.log(item)
-    // })
 
-    let ff =arr.map(  ([key, value])  => {
-       console.log(key,value)
+    console.log( Object.keys(state))
+    console.log( Object.values(state))
+    let xx = ['hyd','cdz','ddd']
+    for (let i in xx){
+        console.log(i)
+        console.log(xx[i])
+    }
+
+    // 判断对象是否包含特定的自身（非继承）属性。
+    console.log(state.hasOwnProperty('list'))
+
+    let a = {name: 'hyd',age: '23'}
+    let b = {age: 13}
+    let c = {...a,...b}
+    console.log(c)
+
+
+   let hh = Object.entries(state).map( ( [key1, value1] ) => {
+        return {key1,value1}
     })
+    console.log(hh)
+
+    //
+    // let c1 = ['age', 'cdz']
+    // let n = ['sss', '555']
+    // let vv = {...c1, ...n}
+    // console.log(vv)
 
 
-    var xx = [ [1,2], [2,4],[3,5] ]
-    let v = xx.map( ([key2,value2]) => {
-     return {key2,value2}
-    })
-    console.log(v)
-    console.log(v[0])
-
-    // let [key , value] = [1,2]
-    // console.log(key)
-    // console.log(value)
 
 
 
